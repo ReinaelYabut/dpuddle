@@ -20,6 +20,7 @@ def contact(request):
 
 def doctor(request, doctors=None):
     doctor = Doctor.objects.all()
+
     return render(request, 'persons/doctors.html',
                   {'doctors': doctors, 'patients': Patient,}
                   )
@@ -41,6 +42,7 @@ def registerPage(request):
 
 def loginPage(request, context=None):
     if request.method == 'POST':
+
         username = request.POST.get('username')
         password = request.POST.get('password')
         user = authenticate(request, username=username, password=password)
@@ -61,3 +63,7 @@ def logoutUser(request):
 
 def home(request):
     return render(request, 'core/home.html')
+
+
+def about(request):
+    return render(request, 'core/about.html')

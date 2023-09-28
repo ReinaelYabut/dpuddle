@@ -1,4 +1,5 @@
-{% extends 'core/base.html' %}
+{#{% extends 'core/base.html' %}#}
+{% include 'core/navbar.html' %}
 
 {% block title %} Doctors {% endblock %}
 
@@ -11,7 +12,6 @@
                     <div>
                         <a href="#">
                             <div>
-                                asd
                                 <img src="{{ doctors.image.url }}" alt="doctor" class="rounded-lg">
                             </div>
                                 <h2 class="text-xl font-bold text-gray-900">{{ doctors.name }}</h2>
@@ -26,5 +26,5 @@
 
             </div>
         </div>
-
+{% include 'core/footer.html' %}
 {% endblock %}

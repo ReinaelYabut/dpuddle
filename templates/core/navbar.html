@@ -1,3 +1,16 @@
+{% block navbar %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device.width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <title>{% block title %}{% endblock %} | eVisit</title>
+</head>
 
 <style>
     .hello-msg{
@@ -21,8 +34,10 @@
                         <li class="ml-6"><a href="/logout" class="px-6 py-3 text-lg bg-red-500 text-white rounded-xl hover:bg-teal-700">Logout</a>
 
                     </li>
-                    </ul>
+                    </u
+     <span><a class="hello-msg" href="{% url 'core:logout' %} "></a> </span>
             <span class="hello-msg">  Hello, {{ request.user }} </span>
 
-            <span><a class="hello-msg" href="{% url 'core:logout' %} "></a> </span>
+
                 </nav>
+{% endblock %}
