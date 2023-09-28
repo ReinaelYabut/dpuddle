@@ -12,35 +12,19 @@
 </head>
 
 <body>
-
-    <div class="container">
-        <div id="carouselExample" class="carousel slide">
-            <div class="carousel-inner">
-                <div class="carousel-item active">
-{#                    <img src="{% static 'media_root/doctors/image_2023-09-22_000224688.png' %}"> alt="">#}
-
-                </div>
-            </div>
-
             <div id="mySidenav" class="sidenav">
                 <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
                 <nav class="py-6 px-6 flex justify-between items-center border-b border-blue-300">
                     <a href="/" class="text-2xl font-bold">eVisit</a>
                     <ul class="flex items-center">
-                        <!-- Commented out content
-                        <li class="ml-6"><a href="/admin" class="text-lg hover:text-blue-300">Admin</a></li>
-                        -->
                         <li class="ml-6"><a href="/doctor" class="text-lg hover:text-blue-300">Doctor</a></li>
                         <li class="ml-6"><a href="/admin" class="text-lg hover:text-blue-300">Admin</a></li>
                         <li class="ml-6"><a href="/patient" class="text-lg hover:text-blue-300">Patient</a></li>
                         <li class="ml-6"><a href="/room" class="text-lg hover:text-blue-300">Rooms</a></li>
                         <li class="ml-6"><a href="/medicine" class="text-lg hover:text-blue-300">Medicines</a></li>
-                        <li class="ml-6"><a href="/login"
-                                class="px-6 py-3 text-lg bg-teal-500 text-white rounded-xl hover:bg-teal-700">Login</a>
-                        </li>
-                        <li class="ml-6"><a href="/sign/up"
-                                class="px-6 py-3 text-lg bg-blue-500 text-white rounded-xl hover:bg-teal-700">Sign
-                                Up</a></li>
+                        <li class="ml-6"><a href="/login" class="px-6 py-3 text-lg bg-teal-500 text-white rounded-xl hover:bg-teal-700">Login</a>
+                        <li class="ml-6"><a href="{% url 'core:signup' %}" class="px-6 py-3 text-lg bg-teal-500 text-white rounded-xl hover:bg-teal-700">Sign Up</a>
+                    </li>
                     </ul>
                 </nav>
                 <div class="px-6 py-6">
@@ -48,11 +32,7 @@
                 </div>
                 <footer class="py-6 px-6 flex-container bg-blue-300">
                     <div class="w-2/3 pr-10">
-                        <!-- Commented out content
-                        <h3 class="text-2xl font-bold">About</h3>
-                        <p class="text-lg text-gray-500">eVisit is a web application that allows patients to book
-                            appointments with doctors and have a video call with them.</p>
-                        -->
+
                     </div>
 
                     <div class="w-1/3">
@@ -66,9 +46,6 @@
                     </div>
                 </footer>
             </div>
-        </div>
-    </div>
-
     <p class="text-center text-gray-500">eVisit &copy; 2020</p>
 </body>
 
