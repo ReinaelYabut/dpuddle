@@ -5,15 +5,16 @@
 
 <head>
     <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet">
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device.width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
 
     <title>{% block title %}{% endblock %} | eVisit</title>
 </head>
 
 <style>
-    .hello-msg{
+    .hello-msg {
         font-size: 20px;
         font-weight: bold;
         color: #000;
@@ -21,24 +22,25 @@
     }
 </style>
 
-<nav class="py-6 px-6 flex justify-between items-center border-b border-blue-300">
-                    <a href="/" class="text-2xl font-bold">eVisit</a>
-                    <ul class="flex items-center">
-                        <li class="ml-6"><a href="/doctor" class="text-lg hover:text-blue-300">Doctor</a></li>
-                        <li class="ml-6"><a href="/admin" class="text-lg hover:text-blue-300">Admin</a></li>
-                        <li class="ml-6"><a href="/patient" class="text-lg hover:text-blue-300">Patient</a></li>
-                        <li class="ml-6"><a href="/room" class="text-lg hover:text-blue-300">Rooms</a></li>
-                         <li class="ml-6"><a href="/appointment" class="text-lg hover:text-blue-300">Appointments</a></li>
-                        <li class="ml-6"><a href="/medicine" class="text-lg hover:text-blue-300">Medicines</a></li>
-                        <li class="ml-6"><a href="/login" class="px-6 py-3 text-lg bg-teal-500 text-white rounded-xl hover:bg-teal-700">Login</a>
-                        <li class="ml-6"><a href="/register" class="px-6 py-3 text-lg bg-teal-500 text-white rounded-xl hover:bg-teal-700">Register</a>
-                        <li class="ml-6"><a href="/logout" class="px-6 py-3 text-lg bg-red-500 text-white rounded-xl hover:bg-teal-700">Logout</a>
-
-                    </li>
-                    </u
-     <span><a class="hello-msg" href="{% url 'core:logout' %} "></a> </span>
-            <span class="hello-msg">  Hello, {{ request.user }} </span>
-
-
-                </nav>
+<body>
+    <script src="{% static 'js/bootstrap.js' %}"></script>
+    <nav class="py-6 px-6 flex justify-content-sm-center border-b border-blue-300">
+        <a href="/" class="text-2xl  font-bold">eVisit</a>
+        <ul class="flex items-center">
+            <li class="ml-6"><a href="/doctor" class="text-lg hover:text-blue-300">Doctor</a></li>
+            <li class="ml-6"><a href="/admin" class="text-lg hover:text-blue-300">Admin</a></li>
+            <li class="ml-6"><a href="/patient" class="text-lg hover:text-blue-300">Patient</a></li>
+            <li class="ml-6"><a href="/room" class="text-lg hover:text-blue-300">Rooms</a></li>
+            <li class="ml-6"><a href="/appointment" class="text-lg hover:text-blue-300">Appointments</a></li>
+            <li class="ml-6"><a href="/medicine" class="text-lg hover:text-blue-300">Medicines</a></li>
+            <li class="ml-6"><a href="/login" class="px-6 py-3 text-lg bg-teal-500 text-white rounded-xl hover:bg-teal-700">Login</a></li>
+            <li class="ml-6"><a href="/register" class="px-6 py-3 text-lg bg-teal-500 text-white rounded-xl hover:bg-teal-700">Register</a></li>
+            <li class="ml-6"><a href="/logout" class="px-6 py-3 text-lg bg-red-500 text-white rounded-xl hover:bg-teal-700">Logout</a></li>
+        </ul>
+{#        <span><a class="hello-msg" href="{% url 'core:logout' %}">Logout</a></span>#}
+        <span class="hello-msg">Hello, {{ request.user }}</span>
+    </nav>
 {% endblock %}
+</body>
+
+</html>
