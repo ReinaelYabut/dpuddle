@@ -18,7 +18,7 @@ from persons.decorators import unaunthenticated_user
 def index(request):
     doctors = Doctor.objects.all()
     return render(request, 'core/home.html',
-                  {'doctors': doctors, 'patients': Patient, }
+              {'doctors': doctors, 'patients': Patient,}
                   )
 
 
@@ -50,6 +50,7 @@ def registerPage(request):
             return redirect('core:login')
             context = {'form': form}
             return render(request, 'core/register.html', context)
+
 
 
 @unaunthenticated_user
@@ -90,4 +91,8 @@ def about(request):
 
 
 def privacypolicy(request):
-    return render(request, 'core/bea.html')
+
+
+
+    return render(request, 'core/privacypolicy.html')
+
