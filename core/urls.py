@@ -1,4 +1,4 @@
-from django.urls import path, include
+from django.urls import path
 from . import views
 
 app_name = 'core'
@@ -11,4 +11,5 @@ urlpatterns = [
     path('login/', views.loginPage, name='login'),
     path('register/', views.registerPage, name='register'),
     path('logout/', views.logoutUser, name='logout'),
-    ]
+    path('privacypolicy/', views.privacypolicy, name='privacypolicy'),
+]

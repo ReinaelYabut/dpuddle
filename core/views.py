@@ -11,7 +11,7 @@ from django.contrib.auth import authenticate, login, logout
 # Create your views here.
 def index(request):
     doctors = Doctor.objects.all()
-    return render(request, 'persons/doctors.html',
+    return render(request, 'core/home.html',
                 {'doctors': doctors, 'patients': Patient,}
                   )
 def contact(request):
@@ -19,7 +19,7 @@ def contact(request):
                   )
 
 def doctor(request, doctors=None):
-    doctor = Doctor.objects.all()
+    doctors = Doctor.objects.all()
 
     return render(request, 'persons/doctors.html',
                   {'doctors': doctors, 'patients': Patient,}
@@ -40,16 +40,17 @@ def registerPage(request):
     context = { 'form': form }
     return render(request, 'core/register.html', context)
 
-def loginPage(request, context=None):
+def loginPage(request):
     if request.method == 'POST':
 
         username = request.POST.get('username')
         password = request.POST.get('password')
         user = authenticate(request, username=username, password=password)
-
+        print(user)
         if user is not None:
-            login(request, username)
-            redirect('core:home')
+            print('asd')
+            login(request, user)
+            return redirect('core:index')
         else:
             messages.info(request, 'Username or Password is incorrect')
 
@@ -67,3 +68,9 @@ def home(request):
 
 def about(request):
     return render(request, 'core/about.html')
+
+
+
+
+def privacypolicy(request):
+    return render(request, 'core/bea.html')

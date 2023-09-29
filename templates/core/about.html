@@ -1,7 +1,7 @@
-{% extends 'core/base.html' %}
-
+{#{% extends 'core/base.html' %}#}
+{% include 'core/navbar.html' %}
 <!DOCTYPE html>
-{% block title %} About {% endblock %}
+{#{% block title %} About {% endblock %}#}
 
 {% block content %}
 <style>
@@ -386,4 +386,5 @@ As the most dependable healthcare partner, Evisit will offer a superior experien
     </div>
   </div>
 </div>
+    {% include 'core/footer.html' %}
 {% endblock %}x
