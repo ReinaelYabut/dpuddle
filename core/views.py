@@ -8,6 +8,7 @@ from django.urls import reverse_lazy
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
+from authuser.models import User
 
 from django.contrib.auth.decorators import login_required
 from persons.decorators import unaunthenticated_user
@@ -39,6 +40,7 @@ def doctor(request, doctors=None):
 
 @unaunthenticated_user
 def registerPage(request):
+
     form = CreateUserForm()
     if request.method == 'POST':
         form = CreateUserForm(request.POST)
@@ -48,8 +50,8 @@ def registerPage(request):
             messages.success(request, 'Account was created for ' + form.cleaned_data.get('username'))
 
             return redirect('core:login')
-            context = {'form': form}
-            return render(request, 'core/register.html', context)
+    context = {'form': form}
+    return render(request, 'core/register.html', context)
 
 
 
@@ -91,9 +93,6 @@ def about(request):
 
 
 def privacypolicy(request):
-
-
-
     return render(request, 'core/privacypolicy.html')
 
 class DoctorCreateView(CreateView):

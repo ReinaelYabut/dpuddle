@@ -1,14 +1,16 @@
 from datetime import timezone
 
 from django.db import models
-from django.contrib.auth.models import UserManager, PermissionsMixin ,AbstractBaseUser
+from django.contrib.auth.models import UserManager, PermissionsMixin, AbstractBaseUser
+
+
 # Create your models here.
 
 class CustomUserManager(UserManager):
     def _create_user(self, email, password, **extra_fields):
         if not email:
             raise ValueError("You have not provided a valid e-mail address")
-        email=self.normalize_email(email)
+        email = self.normalize_email(email)
         user = self.model(email=email, **extra_fields)
         user.set_password(password)
         user.save(using=self.db)
@@ -20,7 +22,7 @@ class CustomUserManager(UserManager):
         extra_fields.setdefault('is_superuser', False)
         return self._create_user(email, password, **extra_fields)
 
-    def create_staffuser(self, email=None, password=None, **extra_fields):
+    def create_doctoruser(self, email=None, password=None, **extra_fields):
         extra_fields.setdefault('is_doctor', True)
         extra_fields.setdefault('is_superuser', True)
         return self._create_user(email, password, **extra_fields)
@@ -34,8 +36,6 @@ class CustomUserManager(UserManager):
             is_active=True,
         )
         return user
-
-
 
 
 class User(AbstractBaseUser, PermissionsMixin):
@@ -65,8 +65,3 @@ class User(AbstractBaseUser, PermissionsMixin):
 
     def get_short_name(self):
         return self.name or self.email.split('@')[0]
-
-
-
-
-
