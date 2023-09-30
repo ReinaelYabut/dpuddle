@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 
 from persons.decorators import unaunthenticated_user
 from persons.models import Doctor, Patient
-from .forms import CreateUserForm
+from .forms import CreateUserForm, DoctorForm
 from django.views.generic import CreateView
 from django.urls import reverse_lazy
 from django.contrib.auth.forms import UserCreationForm
@@ -95,4 +95,11 @@ def privacypolicy(request):
 
 
     return render(request, 'core/privacypolicy.html')
+
+class DoctorCreateView(CreateView):
+    form_class = DoctorForm
+    template_name = 'core/doctors/create_view.html'
+    success_url = reverse_lazy('core:doctor')
+
+
 

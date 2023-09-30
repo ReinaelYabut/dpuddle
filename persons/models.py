@@ -38,3 +38,9 @@ class Appointment(models.Model):
     def __str__(self):
         return self.name
 
+# class CustomUser(AbstractUser):
+#     first name = models.CharField(max_length=50)
+#     last name = models.CharField(max_length=50)
+#
+#     mobile_number = modes3    ls.CharField(max_length=11, null=True, blank=True, validators=[RegexValidator(r'^\d{1,10}$')])
+#     USER

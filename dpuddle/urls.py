@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.urls import path, include
 
-from core.views import index, contact, doctor, privacypolicy, userPage
+from core.views import index, contact, doctor, privacypolicy, userPage, DoctorCreateView
 
 from core.views import index, contact, doctor, privacypolicy
 
@@ -18,6 +18,7 @@ urlpatterns = [
     path('contact/', contact, name='contact'),
     # path('accounts/', include('allauth.urls')),
     # path('accounts/', include('django.contrib.auth.urls')),
+    path('create-doctors/', DoctorCreateView.as_view(), name='create'),
 
 
 ]
