@@ -13,6 +13,8 @@ from authuser.models import User
 from django.contrib.auth.decorators import login_required
 from persons.decorators import unaunthenticated_user
 
+from .models import contactform
+
 
 # Create your views here.
 @login_required(login_url='core:login')
@@ -25,8 +27,16 @@ def index(request):
 
 @login_required(login_url='core:login')
 def contact(request):
-    return render(request, 'core/contact.html'
-                  )
+    if request.method=="POST":
+        post=contactform()
+        post.name=request.POST['name']
+        post.email=request.POST['email']
+        post.message=request.POST['message']
+
+        post.save()
+        return render(request, 'core/contact.html')
+    else:
+        return render(request, 'core/contact.html')
 
 
 @login_required(login_url='core:login')
