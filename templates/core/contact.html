@@ -176,7 +176,15 @@ body{
     <!-- Fontawesome CDN Link -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"/>
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   </head>
+
+  <script type="text/javascript">
+            function popMessage() {
+                alert("You successfully sent your message!");
+            }
+  </script>
+
+
+  </head>
 <body>
   <div class="container">
     <div class="content">
@@ -218,8 +226,14 @@ body{
         </div>
 
         <div class="button">
-          <button type="submit" class="btn btn-lg btn-dark btn-block">Submit Form</button>
+{#          <button type="submit" class="btn btn-lg btn-dark btn-block" >Submit Form</button>#}
+{#            <input onclick="popMessage()"/>#}
+
+          <input type="submit" id="btnShowMsg" value="Submit Form!" onClick="popMessage()" />
+
         </div>
+
+
       </form>
     </div>
     </div>
