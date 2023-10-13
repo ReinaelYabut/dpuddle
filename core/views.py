@@ -119,3 +119,6 @@ def medicines(request):
 
 def rooms(request):
     return render(request, 'core/rooms.html')
+
+def appointments(request):
+    return render(request, 'core/appointments.html')
