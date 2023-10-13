@@ -16,5 +16,5 @@ urlpatterns = [
     path('user/', views.userPage, name='user-page'),
     path('room/', views.rooms, name='rooms'),
     path('appointment/', views.appointments, name='appointments'),
-
+    path('room/<int:room_details>/', views.room_details, name='room_details'),
 ]
