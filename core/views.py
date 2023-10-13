@@ -13,7 +13,7 @@ from authuser.models import User
 from django.contrib.auth.decorators import login_required
 from persons.decorators import unaunthenticated_user
 
-from .models import contactform
+from .models import contactform, medicinelib
 
 
 # Create your views here.
@@ -110,5 +110,12 @@ class DoctorCreateView(CreateView):
     template_name = 'core/doctors/create_view.html'
     success_url = reverse_lazy('core:doctor')
 
+def medicines(request):
+
+    medicine = medicinelib.objects.all()
+
+    return render(request, 'core/medicines.html', {'medicine': medicine})
 
 
+def rooms(request):
+    return render(request, 'core/rooms.html')

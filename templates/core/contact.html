@@ -12,30 +12,41 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Poppins" , sans-serif;
+  {#font-family: "Poppins" , sans-serif;#}
 }
 
 body{
   min-height: 100vh;
   width: 100%;
   background: #c8e8e9;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  {#display: flex;#}
+  {#align-items: center;#}
+  {##}
+  {##}
+  {#    flex-direction: column; /* Stack content vertically */#}
+  {#justify-content: center; /* Start from the top of the page */#}
+
 }
+
+
+
 .container{
   width: 85%;
   background: #fff;
-  border-radius: 6px;
+  border-radius: 30px;
   padding: 20px 60px 30px 40px;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-  margin: 100px auto 20px; /* Add space below the fixed navbar */
-    max-width: 800px; /* Adjust this value as needed */
+
+      flex-direction: column; /* Stack content vertically */
+  margin: 20px auto 20px; /* Space above and below the container */
+
 }
 .container .content{
   display: flex;
   align-items: center;
   justify-content: space-between;
+
+
 }
 .container .content .left-side{
   width: 25%;
@@ -122,8 +133,8 @@ body{
   cursor: pointer;
   transition: all 0.3s ease;
 }
-.button input[type="button"]:hover{
-  background: #5029bc;
+.button input[type="button"]:hover {
+    background: #5029bc;
 }
 
 @media (max-width: 950px) {
@@ -160,40 +171,37 @@ body{
  }
 }
 
+@keyframes fade-in-bck {
+        0% {
+            opacity: 0;
+            transform: translateY(-20px);
+        }
+        100% {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+.fade-in-bck {
+	-webkit-animation: fade-in-bck 0.6s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+	        animation: fade-in-bck 0.6s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+}
 
     </style>
 
 
 
 
-<!DOCTYPE html>
-<!-- Created By CodingLab - www.codinglabweb.com -->
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="UTF-8">
-    <title> Responsive Contact Us Form  | CodingLab </title>
-    <link rel="stylesheet" href="style.css">
-    <!-- Fontawesome CDN Link -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"/>
-     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <script type="text/javascript">
-            function popMessage() {
-                alert("You successfully sent your message!");
-            }
-  </script>
-
-
-  </head>
-<body>
   <div class="container">
+      <div class="fade-in-bck">
     <div class="content">
       <div class="left-side">
         <div class="address details">
           <i class="fas fa-map-marker-alt"></i>
           <div class="topic">Address</div>
-          <div class="text-one">Surkhet, NP12</div>
-          <div class="text-two">Birendranagar 06</div>
+          <div class="text-one">Angeles City</div>
+          <div class="text-two">Pampanga</div>
         </div>
         <div class="phone details">
           <i class="fas fa-phone-alt"></i>
@@ -204,13 +212,12 @@ body{
         <div class="email details">
           <i class="fas fa-envelope"></i>
           <div class="topic">Email</div>
-          <div class="text-one">codinglab@gmail.com</div>
-          <div class="text-two">info.codinglab@gmail.com</div>
+          <div class="text-one">evisit@gmail.com</div>
         </div>
       </div>
       <div class="right-side">
-        <div class="topic-text">Send us a message</div>
-        <p>If you have any work from me or any types of queries related to my tutorial, you can send me message from here. It's my pleasure to help you.</p>
+        <div class="topic-text">Send us a message!</div>
+        <p>If you have any medical inquiries or need to get in touch with our healthcare team, please feel free to send us a message using the form below. We are here to assist you with your healthcare needs.</p>
       <form action="" method="POST" >
 
           {% csrf_token %}
@@ -229,17 +236,25 @@ body{
 {#          <button type="submit" class="btn btn-lg btn-dark btn-block" >Submit Form</button>#}
 {#            <input onclick="popMessage()"/>#}
 
-          <input type="submit" id="btnShowMsg" value="Submit Form!" onClick="popMessage()" />
+          <input type="button" id="btnShowMsg" value="Submit Form!" onClick="popMessage()" />
 
         </div>
 
 
       </form>
+
+
     </div>
     </div>
   </div>
-</body>
-</html>
+</div>
+<script type="text/javascript">
+            function popMessage() {
+                alert("You successfully sent your message!");
+            }
+  </script>
+
+
 
 {% include 'core/footer.html' %}
 {% endblock %}
