@@ -1,10 +1,115 @@
+{% include 'core/navbar.html' %}
+
+{% block title %} {% endblock %}
+
+{% block content %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Rooms</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Available Hospital Rooms</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+
+        h1 {
+            background-color: #007bff;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+
+        table {
+            width: 80%;
+            margin: 20px auto;
+            border-collapse: collapse;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #007bff;
+            color: #fff;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        tr:hover {
+            background-color: #ddd;
+        }
+
+        #refreshButton {
+            display: block;
+            margin: 20px auto;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+
+        #refreshButton:hover {
+            background-color: #0056b3;
+        }
+    </style>
 </head>
 <body>
-Rooms
+    <h1>Available Hospital Rooms</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Room Number</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Room 101</td>
+                <td>Available</td>
+            </tr>
+            <tr>
+                <td>Room 102</td>
+                <td>Occupied</td>
+            </tr>
+            <tr>
+                <td>Room 103</td>
+                <td>Available</td>
+            </tr>
+            <!-- Add more rooms as needed -->
+        </tbody>
+    </table>
+
+    <button id="refreshButton">Refresh Availability</button>
+
+    <script>
+        // JavaScript code to handle room availability updates goes here
+
+        // Example: You would use JavaScript to fetch real-time data from a server/database
+        // and update the table with the latest room availability information
+        document.getElementById("refreshButton").addEventListener("click", function() {
+            // Here, you would make an AJAX request to fetch updated room availability data.
+            // Once you have the data, you can update the table in the HTML.
+            // This example uses a static table for demonstration purposes.
+            // You would replace this with dynamic data retrieval and updating.
+            alert("Refreshing room availability...");
+        });
+    </script>
 </body>
 </html>
+
+
+{% endblock %}
