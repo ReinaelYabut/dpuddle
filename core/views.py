@@ -122,3 +122,7 @@ def rooms(request):
 
 def appointments(request):
     return render(request, 'core/appointments.html')
+
+def room_details(request, room_id):
+    room = Room.objects.get(id=room_id) 
+    return render(request, 'room_details.html', {'room': room})
