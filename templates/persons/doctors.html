@@ -10,7 +10,8 @@
             <div class="grid grid-cols-3 gap3">
                 {% for doctors in doctors %}
                     <div>
-                        <a href="#">
+{#                        Changed href to doctor-detail for dynamic routing#}
+                        <a href="{% url 'core:doctor-detail' doctors.id %}">
                             <div>
                                 <img src="{{ doctors.image.url }}" alt="doctor" class="rounded-t-lg">
                             </div>
