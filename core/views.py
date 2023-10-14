@@ -57,7 +57,8 @@ def registerPage(request):
         if form.is_valid():
             form.save()
             username = form.cleaned_data.get('username')
-            messages.success(request, 'Account was created for ' + form.cleaned_data.get('username'))
+            # Changed username to email
+            messages.success(request, 'Account was created for ' + form.cleaned_data.get('email'))
 
             return redirect('core:login')
     context = {'form': form}
