@@ -1,0 +1,133 @@
+{% include 'core/navbar.html' %}
+
+{% block content %}
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hospital Room Availability</title>
+    <style>
+        body {
+            font-family: "Open sans", sans-serif;
+            background-color: #056158 ;
+            color: #fff;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #3498DB   ;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+        }
+
+        h1 {
+            margin: 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color:#1A5276  ;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .room {
+            background-color: #3361FF ;
+            padding: 20px;
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .room img {
+            width: 100px;
+            height: 100px;
+            border-radius: 5px;
+            margin-right: 20px;
+        }
+
+        .room-details {
+            flex-grow: 1;
+        }
+
+        .room-number {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .availability {
+            font-size: 18px;
+            margin-top: 5px;
+        }
+
+        .details-button, .reserve-button {
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+
+        .details-button {
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Hospital Room Availability</h1>
+    </header>
+    <div class="container">
+        <div class="room">
+            <img src="https://scontent.fmnl9-3.fna.fbcdn.net/v/t1.15752-9/370223248_1265642627482092_5670855871271944805_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=8cd0a2&_nc_eui2=AeFOf3kLvJRz3sQMb2sWdnO_MbRLOP2pTrYxtEs4_alOtsn3FVkT6kRpcCyojYinydoaHt9NQSKXPFKfDQYuQIJK&_nc_ohc=to14xkJzXDcAX_85XXq&_nc_ht=scontent.fmnl9-3.fna&oh=03_AdQgXtbqLb1uQqtJGdBfoUO68tkYUNJpqbKcga_hVNUULA&oe=6550B5EF" alt="Room 101">
+            <div class="room-details">
+                <div class="room-number">Room 101</div>
+                <div class="availability">Availability: <span id="room101">Available</span></div>
+                <button class="details-button" onclick="location.href='room_details.html'">Details</button>
+                <button class="reserve-button" onclick="toggleAvailability('room101')">Toggle</button>
+            </div>
+        </div>
+        <div class="room">
+            <img src="https://scontent.fmnl9-2.fna.fbcdn.net/v/t1.15752-9/304930773_1163879800885942_6865892153993837260_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=8cd0a2&_nc_eui2=AeFBD9dQWQ8a1IzSvdMiEvSkSBYET1NW3ddIFgRPU1bd14imLwgFnqSaUb4vfjdSCEgE5EYZU6dmJClpyvMcpK9B&_nc_ohc=ULKIktsKLC0AX-zBN3q&_nc_oc=AQm82KF34hlQgmqr-kwym7ukHq226oHUEuE6WE3ecCOP61dXmUKss6TJAU1QlIlTluY&_nc_ht=scontent.fmnl9-2.fna&oh=03_AdSe6dUz95wYlK7dUxbZYR6bN9W4c8CN-2jzatF1J-ZS8g&oe=6550B22E" alt="Room 102">
+            <div class="room-details">
+                <div class="room-number">Room 102</div>
+                <div class="availability">Availability: <span id="room102">Unavailable</span></div>
+                <button class="details-button" onclick="location.href='room_details.html'">Details</button>
+                <button class="reserve-button" onclick="toggleAvailability('room102')">Toggle</button>
+            </div>
+        </div>
+         <div class="room">
+            <img src="https://scontent.fmnl9-4.fna.fbcdn.net/v/t1.15752-9/387466452_174057649083823_6907263864473038128_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=8cd0a2&_nc_eui2=AeEwDWYdARILKl9caQINOYOuB0KEpPqoMMQHQoSk-qgwxF0eM_tsuBykolg8gHPusEXhYqseV-zYpPIlc8ZaCIhW&_nc_ohc=v9UtrVD7FSwAX_q0m-u&_nc_ht=scontent.fmnl9-4.fna&oh=03_AdTLpY-1_5s-VjcwZqSVULE84O6UhhfWhQuGLi46Z752mg&oe=6550992E" alt="Room 101">
+            <div class="room-details">
+                <div class="room-number">Room 103</div>
+                <div class="availability">Availability: <span id="room101">Available</span></div>
+                <button class="details-button" onclick="location.href='room_details.html'">Details</button>
+                <button class="reserve-button" onclick="toggleAvailability('room101')">Toggle</button>
+            </div>
+        </div>
+
+        <!-- Add more room divs as needed -->
+    </div>
+
+    <script>
+        function toggleAvailability(roomId) {
+            const roomElement = document.getElementById(roomId);
+
+            if (roomElement.textContent === 'Available') {
+                roomElement.textContent = 'Unavailable';
+            } else {
+                roomElement.textContent = 'Available';
+            }
+        }
+    </script>
+</body>
+</html>
+
+{% endblock %}
