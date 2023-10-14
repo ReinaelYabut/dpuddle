@@ -46,8 +46,14 @@ def doctor(request, doctors=None):
     return render(request, 'persons/doctors.html',
                   {'doctors': doctors, 'patients': Patient, }
                   )
-
-
+# added this new function for doctor detail
+@login_required(login_url='core:login')
+def doctorDetails(request, pk):
+    doctors = Doctor.objects.get(id=pk)
+    print(doctors)
+    return render(request, 'persons/doctor_detail.html',
+                  {'doctors': doctors, 'patients': Patient, }
+                  )
 @unaunthenticated_user
 def registerPage(request):
 
