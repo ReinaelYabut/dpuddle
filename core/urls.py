@@ -7,6 +7,8 @@ urlpatterns = [
     path('', views.index, name='index'),
     path('contact/', views.contact, name='contact'),
     path('doctor/', views.doctor, name='doctor'),
+    # Added this new path for doctor detail
+    path('doctor/<int:pk>/', views.doctorDetails, name='doctor-detail'),
     path('about/', views.about, name='about'),
     path('login/', views.loginPage, name='login'),
     path('register/', views.registerPage, name='register'),
