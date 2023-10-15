@@ -116,6 +116,10 @@ def medicines(request):
 
     return render(request, 'core/medicines.html', {'medicine': medicine})
 
+def medicinedetail(request, med_id):
+    medicine = medicinelib.objects.get(pk=med_id)
+    return render(request, 'core/medicinedetail.html', {'medicine': medicine})
+
 
 def rooms(request):
     return render(request, 'core/rooms.html')

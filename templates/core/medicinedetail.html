@@ -2,7 +2,7 @@
 
 {% block content %}
 
-    <style>
+     <style>
 
     @import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800|Oswald:400,500,600,700');
 
@@ -90,7 +90,24 @@ body{
 	        animation: fade-in-bck 0.6s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
 }
 
-
+.right-side .button{
+  display: inline-block;
+  margin-top: 12px;
+}
+  .button input[type="button"] {
+    color: #fff;
+    font-size: 18px;
+    outline: none;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 6px;
+    background: #3e2093;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  .button input[type="button"]:hover {
+    background: #5029bc;
+  }
 
 </style>
 
@@ -98,38 +115,23 @@ body{
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-
-    <title>Medicine Library | eVisit </title>
-
+    <title>{{ medicine.name }} | Medicine Library</title>
 </head>
 <body>
+    <div class="grid gap3" id="content-container">
 
-    <div class="grid grid-cols-3 gap3" id="content-container">
+    <div class="fade-in-bck m-md-2">
 
-     {% for medicine in medicine %}
-         <a href="/medicinedetail/{{ medicine.id }}/">
-             <div class="fade-in-bck m-md-2">
-                <div>
-                     <img src="{{ medicine.image.url }}" alt="medicine" style="border-radius: 30px; width: 400px; height: 400px;>
-			                    {#<span class="rounded img"></span>#}
+            {{ medicine.name }}
 
-                </div>
+        <div class="button">
+          <input type="button" id="btnShowMsg" value="Back to Medicine List" onClick="window.location.href='/medicine'" />
+        </div>
+    </div>
 
-                  <div class="text-container">
-                    <h4>{{ medicine.name }}</h4>
-                    <p>{{ medicine.description }}</p>
-                    <p class="fst-italic">Side Effects: {{ medicine.side_effects }}</p>
-                  </div>
-             </div>
-
-
-         </a>
-
-    {% endfor %}
     </div>
 </body>
 </html>
-
 
 {% include 'core/footer.html' %}
 {% endblock %}
