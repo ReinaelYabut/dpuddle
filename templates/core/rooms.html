@@ -10,7 +10,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hospital Room Availability</title>
     <style>
-        body {
+        body
+        {
+  min-height: 100vh;
+  width: 100%;
+  background: #c8e8e9;
+  {#display: flex;#}
+  {#align-items: center;#}
+  {##}
+  {##}
+  {#    flex-direction: column; /* Stack content vertically */#}
+  {#justify-content: center; /* Start from the top of the page */#}
+
+}
+
+
+.text-container {
+            max-width: 400px; /* Adjust the width as needed */
+        }
+
+
+        {
             font-family: "Open sans", sans-serif;
             background-color: #056158 ;
             color: #fff;
@@ -33,7 +53,7 @@
             max-width: 800px;
             margin: 20px auto;
             padding: 20px;
-            background-color:#1A5276  ;
+            background-color:#c8e8e9 ;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
 
@@ -68,7 +88,7 @@
         }
 
         .details-button, .reserve-button {
-            background-color: #007BFF;
+            background-color: #4c9dff;
             color: #fff;
             border: none;
             padding: 10px 20px;
@@ -129,5 +149,5 @@
     </script>
 </body>
 </html>
-
+{% include 'core/footer.html' %}
 {% endblock %}
