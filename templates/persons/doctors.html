@@ -5,20 +5,27 @@
 
 
 {% block content %}
-        <div class="mt-6 px-6 py-12 bg-grey-100 rounded-lg shadow-md overflow-hidden sm:rounded-lg">
+        <div class="mt-6 px-6 py-12 bg-gray-100 rounded-xl">
             <h2 class="mb-12 tex-2xl text-center">Doctors</h2>
             <div class="grid grid-cols-3 gap3">
                 {% for doctors in doctors %}
                     <div>
-                        <a href="#">
+{#                        Changed href to doctor-detail for dynamic routing#}
+                        <a href="{% url 'core:doctor-detail' doctors.id %}">
                             <div>
-                                <img src="{{ doctors.image.url }}" alt="doctor" class="rounded-lg">
+                                <img src="{{ doctors.image.url }}" alt="doctor" class="rounded-t-lg">
                             </div>
+                            <div class="p-6 bg-white rounded-b-lg shadow-lg " >
                                 <h2 class="text-xl font-bold text-gray-900">{{ doctors.name }}</h2>
+                            </div>
+                            <div class="p-6 bg-white rounded-b-lg shadow-lg">
                                 <p class="text-xl font-bold text-gray-900">{{ doctors.speciality }}</p>
                                 <p class="text-xl font-bold text-gray-900">{{ doctors.phone }}</p>
                                 <p class="text-xl font-bold text-gray-900">{{ doctors.email }}</p>
                                 <p class="text-xl font-bold text-gray-900">{{ doctors.address }}</p>
+                            </div>
+
+
                         </a>
                     </div>
                 {% endfor %}

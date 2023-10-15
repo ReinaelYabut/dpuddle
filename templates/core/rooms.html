@@ -1,115 +1,133 @@
 {% include 'core/navbar.html' %}
 
-{% block title %} {% endblock %}
-
 {% block content %}
 
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Available Hospital Rooms</title>
+    <title>Hospital Room Availability</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: "Open sans", sans-serif;
+            background-color: #056158 ;
+            color: #fff;
             margin: 0;
             padding: 0;
-            background-color: #f0f0f0;
+        }
+
+        header {
+            background-color: #3498DB   ;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
         }
 
         h1 {
-            background-color: #007bff;
-            color: #fff;
-            padding: 20px;
-            text-align: center;
+            margin: 0;
         }
 
-        table {
-            width: 80%;
+        .container {
+            max-width: 800px;
             margin: 20px auto;
-            border-collapse: collapse;
-            background-color: #fff;
+            padding: 20px;
+            background-color:#1A5276  ;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
 
-        th, td {
-            padding: 12px 15px;
-            text-align: left;
+        .room {
+            background-color: #3361FF ;
+            padding: 20px;
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
-        th {
-            background-color: #007bff;
-            color: #fff;
+        .room img {
+            width: 100px;
+            height: 100px;
+            border-radius: 5px;
+            margin-right: 20px;
         }
 
-        tr:nth-child(even) {
-            background-color: #f2f2f2;
+        .room-details {
+            flex-grow: 1;
         }
 
-        tr:hover {
-            background-color: #ddd;
+        .room-number {
+            font-size: 24px;
+            font-weight: bold;
         }
 
-        #refreshButton {
-            display: block;
-            margin: 20px auto;
-            padding: 10px 20px;
-            background-color: #007bff;
+        .availability {
+            font-size: 18px;
+            margin-top: 5px;
+        }
+
+        .details-button, .reserve-button {
+            background-color: #007BFF;
             color: #fff;
             border: none;
+            padding: 10px 20px;
             cursor: pointer;
         }
 
-        #refreshButton:hover {
-            background-color: #0056b3;
+        .details-button {
+            margin-right: 10px;
         }
     </style>
 </head>
 <body>
-    <h1>Available Hospital Rooms</h1>
+    <header>
+        <h1>Hospital Room Availability</h1>
+    </header>
+    <div class="container">
+        <div class="room">
+            <img src="https://scontent.fmnl9-3.fna.fbcdn.net/v/t1.15752-9/370223248_1265642627482092_5670855871271944805_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=8cd0a2&_nc_eui2=AeFOf3kLvJRz3sQMb2sWdnO_MbRLOP2pTrYxtEs4_alOtsn3FVkT6kRpcCyojYinydoaHt9NQSKXPFKfDQYuQIJK&_nc_ohc=to14xkJzXDcAX_85XXq&_nc_ht=scontent.fmnl9-3.fna&oh=03_AdQgXtbqLb1uQqtJGdBfoUO68tkYUNJpqbKcga_hVNUULA&oe=6550B5EF" alt="Room 101">
+            <div class="room-details">
+                <div class="room-number">Room 101</div>
+                <div class="availability">Availability: <span id="room101">Available</span></div>
+                <button class="details-button" onclick="location.href='room_details.html'">Details</button>
+                <button class="reserve-button" onclick="toggleAvailability('room101')">Toggle</button>
+            </div>
+        </div>
+        <div class="room">
+            <img src="https://scontent.fmnl9-2.fna.fbcdn.net/v/t1.15752-9/304930773_1163879800885942_6865892153993837260_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=8cd0a2&_nc_eui2=AeFBD9dQWQ8a1IzSvdMiEvSkSBYET1NW3ddIFgRPU1bd14imLwgFnqSaUb4vfjdSCEgE5EYZU6dmJClpyvMcpK9B&_nc_ohc=ULKIktsKLC0AX-zBN3q&_nc_oc=AQm82KF34hlQgmqr-kwym7ukHq226oHUEuE6WE3ecCOP61dXmUKss6TJAU1QlIlTluY&_nc_ht=scontent.fmnl9-2.fna&oh=03_AdSe6dUz95wYlK7dUxbZYR6bN9W4c8CN-2jzatF1J-ZS8g&oe=6550B22E" alt="Room 102">
+            <div class="room-details">
+                <div class="room-number">Room 102</div>
+                <div class="availability">Availability: <span id="room102">Unavailable</span></div>
+                <button class="details-button" onclick="location.href='room_details.html'">Details</button>
+                <button class="reserve-button" onclick="toggleAvailability('room102')">Toggle</button>
+            </div>
+        </div>
+         <div class="room">
+            <img src="https://scontent.fmnl9-4.fna.fbcdn.net/v/t1.15752-9/387466452_174057649083823_6907263864473038128_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=8cd0a2&_nc_eui2=AeEwDWYdARILKl9caQINOYOuB0KEpPqoMMQHQoSk-qgwxF0eM_tsuBykolg8gHPusEXhYqseV-zYpPIlc8ZaCIhW&_nc_ohc=v9UtrVD7FSwAX_q0m-u&_nc_ht=scontent.fmnl9-4.fna&oh=03_AdTLpY-1_5s-VjcwZqSVULE84O6UhhfWhQuGLi46Z752mg&oe=6550992E" alt="Room 101">
+            <div class="room-details">
+                <div class="room-number">Room 103</div>
+                <div class="availability">Availability: <span id="room101">Available</span></div>
+                <button class="details-button" onclick="location.href='room_details.html'">Details</button>
+                <button class="reserve-button" onclick="toggleAvailability('room101')">Toggle</button>
+            </div>
+        </div>
 
-    <table>
-        <thead>
-            <tr>
-                <th>Room Number</th>
-                <th>Status</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>Room 101</td>
-                <td>Available</td>
-            </tr>
-            <tr>
-                <td>Room 102</td>
-                <td>Occupied</td>
-            </tr>
-            <tr>
-                <td>Room 103</td>
-                <td>Available</td>
-            </tr>
-            <!-- Add more rooms as needed -->
-        </tbody>
-    </table>
-
-    <button id="refreshButton">Refresh Availability</button>
+        <!-- Add more room divs as needed -->
+    </div>
 
     <script>
-        // JavaScript code to handle room availability updates goes here
+        function toggleAvailability(roomId) {
+            const roomElement = document.getElementById(roomId);
 
-        // Example: You would use JavaScript to fetch real-time data from a server/database
-        // and update the table with the latest room availability information
-        document.getElementById("refreshButton").addEventListener("click", function() {
-            // Here, you would make an AJAX request to fetch updated room availability data.
-            // Once you have the data, you can update the table in the HTML.
-            // This example uses a static table for demonstration purposes.
-            // You would replace this with dynamic data retrieval and updating.
-            alert("Refreshing room availability...");
-        });
+            if (roomElement.textContent === 'Available') {
+                roomElement.textContent = 'Unavailable';
+            } else {
+                roomElement.textContent = 'Available';
+            }
+        }
     </script>
 </body>
 </html>
-
 
 {% endblock %}

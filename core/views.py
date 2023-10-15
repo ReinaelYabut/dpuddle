@@ -46,8 +46,14 @@ def doctor(request, doctors=None):
     return render(request, 'persons/doctors.html',
                   {'doctors': doctors, 'patients': Patient, }
                   )
-
-
+# added this new function for doctor detail
+@login_required(login_url='core:login')
+def doctorDetails(request, pk):
+    doctors = Doctor.objects.get(id=pk)
+    print(doctors)
+    return render(request, 'persons/doctor_detail.html',
+                  {'doctors': doctors, 'patients': Patient, }
+                  )
 @unaunthenticated_user
 def registerPage(request):
 
@@ -57,7 +63,8 @@ def registerPage(request):
         if form.is_valid():
             form.save()
             username = form.cleaned_data.get('username')
-            messages.success(request, 'Account was created for ' + form.cleaned_data.get('username'))
+            # Changed username to email
+            messages.success(request, 'Account was created for ' + form.cleaned_data.get('email'))
 
             return redirect('core:login')
     context = {'form': form}
@@ -126,3 +133,7 @@ def rooms(request):
 
 def appointments(request):
     return render(request, 'core/appointments.html')
+
+def room_details(request, room_id):
+    room = Room.objects.get(id=room_id) 
+    return render(request, 'room_details.html', {'room': room})
