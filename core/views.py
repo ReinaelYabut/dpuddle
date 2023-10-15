@@ -118,9 +118,7 @@ class DoctorCreateView(CreateView):
     success_url = reverse_lazy('core:doctor')
 
 def medicines(request):
-
     medicine = medicinelib.objects.all()
-
     return render(request, 'core/medicines.html', {'medicine': medicine})
 
 def medicinedetail(request, med_id):
