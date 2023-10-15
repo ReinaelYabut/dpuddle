@@ -122,9 +122,31 @@
       color: #fff;
       padding: 20px;
       text-align: center;
+      font-weight: bold;
+      font-size: 36px;
+      font-family: "Arial Rounded MT Bold", Times, serif;
         }
 
-  body {
+  body
+  {
+  min-height: 100vh;
+  width: 100%;
+  background: #c8e8e9;
+  {#display: flex;#}
+  {#align-items: center;#}
+  {##}
+  {##}
+  {#    flex-direction: column; /* Stack content vertically */#}
+  {#justify-content: center; /* Start from the top of the page */#}
+
+}
+
+
+.text-container {
+            max-width: 400px; /* Adjust the width as needed */
+        }
+
+  {
     font-family: "Inter", Arial, Helvetica, sans-serif;
   }
   .formbold-mb-5 {
@@ -144,7 +166,7 @@
     margin: 0 auto;
     max-width: 550px;
     width: 100%;
-    background: white;
+    background: #c8e8e9;
   }
   .formbold-form-label {
     display: block;
@@ -218,4 +240,5 @@
 </body>
 </html>
 
+{% include 'core/footer.html' %}
 {% endblock %}
