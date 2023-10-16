@@ -13,7 +13,7 @@ from authuser.models import User
 from django.contrib.auth.decorators import login_required
 from persons.decorators import unaunthenticated_user
 
-from .models import contactform, medicinelib
+from .models import contactform, medicinelib, medicine_detail
 
 
 # Create your views here.
@@ -123,7 +123,8 @@ def medicines(request):
 
 def medicinedetail(request, med_id):
     medicine = medicinelib.objects.get(pk=med_id)
-    return render(request, 'core/medicinedetail.html', {'medicine': medicine})
+    detail = medicine.detail
+    return render(request, 'core/medicinedetail.html', {'medicine': medicine, 'detail': detail})
 
 
 def rooms(request):

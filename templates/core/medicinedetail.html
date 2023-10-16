@@ -118,18 +118,25 @@ body{
     <title>{{ medicine.name }} | Medicine Library</title>
 </head>
 <body>
-    <div class="grid gap3" id="content-container">
-
+     <div id="content-container">
+    {% for detail in medicine.detail_set.all %}
     <div class="fade-in-bck m-md-2">
-
-            {{ medicine.name }}
-
-        <div class="button">
-          <input type="button" id="btnShowMsg" value="Back to Medicine List" onClick="window.location.href='/medicine'" />
+        <img src="{{ medicine.image.url }}" alt="medicine" style="border-radius: 30px; width: 400px; height: 400px;">
+        <div class="text-container">
+            <h4>{{ medicine.name }}</h4>
+            <p>{{ medicine.description }}</p>
+            <p class="fst-italic">Side Effects: {{ medicine.side_effects }}</p>
+            <p>{{ detail.additional_info }}</p>
+            <p>{{ detail.usage_info }}</p>
         </div>
     </div>
+    {% endfor %}
 
+    <div class="button">
+        <input type="button" id="btnShowMsg" value="Back to Medicine List" onClick="window.location.href='/medicine'" />
     </div>
+</div>
+
 </body>
 </html>
 
