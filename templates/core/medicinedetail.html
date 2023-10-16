@@ -68,12 +68,6 @@ body{
   {#justify-content: center; /* Start from the top of the page */#}
 
 }
-
-
-.text-container {
-            max-width: 400px; /* Adjust the width as needed */
-        }
-
 @keyframes fade-in-bck {
         0% {
             opacity: 0;
@@ -119,23 +113,48 @@ body{
 </head>
 <body>
      <div id="content-container">
-    {% for detail in medicine.detail_set.all %}
     <div class="fade-in-bck m-md-2">
-        <img src="{{ medicine.image.url }}" alt="medicine" style="border-radius: 30px; width: 400px; height: 400px;">
+        <img src="{{ medicine.image.url }}" alt="medicine" style="border-radius: 30px; width: 400px; height: 400px; display: block; margin: 0 auto;">
         <div class="text-container">
             <h4>{{ medicine.name }}</h4>
             <p>{{ medicine.description }}</p>
             <p class="fst-italic">Side Effects: {{ medicine.side_effects }}</p>
             <p>{{ detail.additional_info }}</p>
             <p>{{ detail.usage_info }}</p>
+
+            <p class="fst-italic">All material copyright MediResource Inc. 1996 – 2023. Terms and conditions of use. The contents herein are for informational purposes only. Always seek the advice of your physician or other qualified health provider with any questions you may have regarding a medical condition.</p>
+
         </div>
     </div>
-    {% endfor %}
 
     <div class="button">
         <input type="button" id="btnShowMsg" value="Back to Medicine List" onClick="window.location.href='/medicine'" />
     </div>
+    <div class="button" id="button" >
+         <input type="button" onclick="topFunction()" value="Back to Top" title="Go to top"/>
+    </div>
+
 </div>
+</div>
+<script>
+let mybutton = document.getElementById("button");
+
+window.addEventListener("scroll", scrollFunction);
+
+function scrollFunction() {
+  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+    mybutton.style.display = "block";
+  } else {
+    mybutton.style.display = "none";
+  }
+}
+
+function topFunction() {
+  document.body.scrollTop = 0; // For Safari
+  document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE, and Opera
+}
+</script>
+
 
 </body>
 </html>
