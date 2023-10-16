@@ -1,163 +1,155 @@
 {% include 'core/navbar.html' %}
 
 {% block content %}
-
-     <style>
-
+<style>
     @import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800|Oswald:400,500,600,700');
 
-
-#content-container{
-
-	font-family: 'Open Sans', sans-serif;
-	font-size: 13px;
-	font-weight: 400;
-	background: #FFFFFF;
-	color: #49535a;
-
-    width: 85%;
-
-  border-radius: 10px;
-  padding: 10px 50px 20px 30px;
-  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-
-      flex-direction: column; /* Stack content vertically */
-  margin: 20px auto 20px; /* Space above and below the container */
-}
-div
-{
-	display: block;
-	position: relative;
-    box-sizing: border-box;
-}
-
-h1{font-size: 72px;}
-h2{font-size: 48px;}
-h3{font-size: 36px;}
-h4{font-size: 24px;}
-h5{font-size: 18px;}
-h1, h2, h3, h4, h5, h6
-{
-	font-family: 'Oswald', sans-serif;
-	font-weight: 400;
-	-webkit-font-smoothing: antialiased;
-	text-shadow: rgba(0,0,0,.01) 0 0 1px;
-}
-h1::selection,
-h2::selection,
-h3::selection,
-h4::selection,
-h5::selection,
-h6::selection,
-
-img.rounded {
-    width: 400px;
-    height: 400px;
-    border-radius: 50px;
-}
-
-body{
-  min-height: 100vh;
-  width: 100%;
-  background: #c8e8e9;
-  {#display: flex;#}
-  {#align-items: center;#}
-  {##}
-  {##}
-  {#    flex-direction: column; /* Stack content vertically */#}
-  {#justify-content: center; /* Start from the top of the page */#}
-
-}
-@keyframes fade-in-bck {
-        0% {
-            opacity: 0;
-            transform: translateY(-20px);
-        }
-        100% {
-            opacity: 1;
-            transform: translateY(0);
-        }
+    body {
+        font-family: 'Open Sans', sans-serif;
+        font-size: 13px;
+        font-weight: 400;
+        background: #c8e8e9;
     }
 
-.fade-in-bck {
-	-webkit-animation: fade-in-bck 0.6s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
-	        animation: fade-in-bck 0.6s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
-}
+    #content-container {
+        max-width: 85%;
+        margin: 20px auto;
+        display: flex;
+        flex-direction: row;
+        border-radius: 10px;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+        background: #FFFFFF;
+        color: #49535a;
+        padding: 10px 30px 20px 50px;
+    }
 
-.right-side .button{
-  display: inline-block;
-  margin-top: 12px;
-}
-  .button input[type="button"] {
-    color: #fff;
-    font-size: 18px;
-    outline: none;
-    border: none;
-    padding: 8px 16px;
-    border-radius: 6px;
-    background: #3e2093;
-    cursor: pointer;
-    transition: all 0.3s ease;
-  }
-  .button input[type="button"]:hover {
-    background: #5029bc;
-  }
+    .image-container {
+        flex: 1;
+        max-width: 400px;
+    }
+
+    .text-container {
+        flex: 1;
+        margin-left: 20px;
+    }
+
+    img {
+        width: 400px;
+        height: 400px;
+        border-radius: 30px;
+    }
+
+    h4 {
+        font-size: 24px;
+        font-family: 'Oswald', sans-serif;
+        font-weight: 400;
+    }
+
+
+    .button {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        display: none;
+    }
+
+    .mybutton {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+    }
+
+    .button input[type="mybutton"] {
+        color: #fff;
+        font-size: 18px;
+        outline: none;
+        border: none;
+        padding: 8px 16px;
+        border-radius: 6px;
+        background: #3e2093;
+
+    }
+
+    .button input[type="mybutton"]:hover {
+        background: #5029bc;
+    }
+
+    .button input[type="button"] {
+        color: #fff;
+        font-size: 18px;
+        outline: none;
+        border: none;
+        padding: 8px 16px;
+        border-radius: 6px;
+        background: #3e2093;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+
+    .button input[type="button"]:hover {
+        background: #5029bc;
+    }
+
+
+
+
+
+    .details p {
+        margin-top:3px;
+        margin-bottom: 15px;
+        margin-right: 4px;
+        line-height: 1.6; /* Adjust the line height value to control spacing between lines */
+
+    }
 
 </style>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>{{ medicine.name }} | Medicine Library</title>
-</head>
-<body>
-     <div id="content-container">
-    <div class="fade-in-bck m-md-2">
-        <img src="{{ medicine.image.url }}" alt="medicine" style="border-radius: 30px; width: 400px; height: 400px; display: block; margin: 0 auto;">
-        <div class="text-container">
-            <h4>{{ medicine.name }}</h4>
-            <p>{{ medicine.description }}</p>
-            <p class="fst-italic">Side Effects: {{ medicine.side_effects }}</p>
+<div id="content-container">
+    <div class="image-container">
+        <img src="{{ medicine.image.url }}" alt="medicine">
+    </div>
+    <div class="text-container">
+        <h4>{{ medicine.name }}</h4>
+        <p>{{ medicine.description }}</p>
+        <p class="fst-italic">Side Effects: {{ medicine.side_effects }}</p>
+        <div class="details">
+            <h4> What is {{ medicine.name }}</h4>
             <p>{{ detail.additional_info }}</p>
+            <h4>How should I take {{ medicine.name }}?</h4>
             <p>{{ detail.usage_info }}</p>
-
-            <p class="fst-italic">All material copyright MediResource Inc. 1996 – 2023. Terms and conditions of use. The contents herein are for informational purposes only. Always seek the advice of your physician or other qualified health provider with any questions you may have regarding a medical condition.</p>
-
+            <p class="fst-italic">All material copyright eVisit HealthCare 2020. Terms and conditions of use. The contents herein are for informational purposes only. Always seek the advice of your physician or other qualified health provider with any questions you may have regarding a medical condition.</p>
+            <div class="mybutton" style="position: absolute; bottom: 20px; right: 20px;">
+                <input type="button" id="btnShowMsg" value="Back to Medicine List" onClick="window.location.href='/medicine'" />
+            </div>
         </div>
     </div>
-
-    <div class="button">
-        <input type="button" id="btnShowMsg" value="Back to Medicine List" onClick="window.location.href='/medicine'" />
-    </div>
-    <div class="button" id="button" >
-         <input type="button" onclick="topFunction()" value="Back to Top" title="Go to top"/>
-    </div>
-
 </div>
+
+
+
+
+
+<div class="button" id="button">
+    <input type="button" onclick="topFunction()" value="Back to Top" title="Go to top" />
 </div>
+
 <script>
-let mybutton = document.getElementById("button");
+    let thebutton = document.getElementById("button");
 
-window.addEventListener("scroll", scrollFunction);
+    window.addEventListener("scroll", scrollFunction);
 
-function scrollFunction() {
-  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-    mybutton.style.display = "block";
-  } else {
-    mybutton.style.display = "none";
-  }
-}
+    function scrollFunction() {
+        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+            thebutton.style.display = "block";
+        } else {
+            thebutton.style.display = "none";
+        }
+    }
 
-function topFunction() {
-  document.body.scrollTop = 0; // For Safari
-  document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE, and Opera
-}
+    function topFunction() {
+        document.body.scrollTop = 0; // For Safari
+        document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE, and Opera
+    }
 </script>
-
-
-</body>
-</html>
-
 {% include 'core/footer.html' %}
 {% endblock %}
