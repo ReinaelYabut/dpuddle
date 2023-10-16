@@ -23,3 +23,13 @@ class medicinelib(models.Model):
         ordering = ['name']
     def __str__(self):
         return self.name
+
+class medicine_detail(models.Model):
+    medicine = models.OneToOneField(medicinelib, on_delete=models.CASCADE, related_name='detail')
+    additional_info=models.TextField()
+    usage_info=models.TextField()
+
+    def __str__(self):
+        return self.medicine.name
+
+
