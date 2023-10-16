@@ -22,4 +22,5 @@ urlpatterns = [
     path('appointment/', views.appointments, name='appointments'),
     path('room/<int:room_details>/', views.room_details, name='room_details'),
     path('patient/', views.patients, name='patients'),
+    # path('search/', views.searchbar, name='search'),
 ]

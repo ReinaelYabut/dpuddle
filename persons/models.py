@@ -1,5 +1,7 @@
 from django.db import models
 
+
+
 # Create your models here.
 
 class Doctor(models.Model):
@@ -44,3 +46,4 @@ class Appointment(models.Model):
 #
 #     mobile_number = modes3    ls.CharField(max_length=11, null=True, blank=True, validators=[RegexValidator(r'^\d{1,10}$')])
 #     USER
+

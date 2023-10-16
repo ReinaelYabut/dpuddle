@@ -1,3 +1,4 @@
+from django.db.models import Q
 from django.shortcuts import render, redirect
 
 from persons.decorators import unaunthenticated_user
@@ -133,8 +134,33 @@ def appointments(request):
     return render(request, 'core/appointments.html')
 
 def room_details(request, room_id):
-    room = Room.objects.get(id=room_id) 
-    return render(request, 'room_details.html', {'room': room})
+    room = Rooms.objects.get(id=room_id)
+    return render(request, 'core/room_details.html', {'room': room})
 
 def patients(request):
     return render(request, 'core/patients.html')
+
+# def doctor_list(request):
+#     search_query = request.GET.get('search')
+#     if search_query:
+#         # Filter doctors by name or specialization
+#         doctors = Doctor.objects.filter(Q(name__icontains=search_query) | Q(specialization__icontains=search_query))
+#     else:
+#         # If no search query, show all doctors
+#         doctors = Doctor.objects.all()
+#
+#     return render(request, 'persons/doctors.html', {'doctors': doctors})
+#
+# def searchbar(request):
+#     if request.method == 'GET':
+#         query = request.GET['query']
+#         if query:
+#             doctors = Doctor.objects.filter(Q(name__icontains=query) | Q(specialization__icontains=query))
+#             return render(request, 'core/searchbar.html', {'doctors': doctors})
+#         else:
+#             print('No information to show')
+#             return render(request, 'core/searchbar.html', {})
+#
+# def doctor_list(request):
+#     doctors = Doctor.objects.all()  # Retrieve all Doctor objects from the database
+#     return render(request, 'persons/doctor_detail.html', {'doctors': doctors})
