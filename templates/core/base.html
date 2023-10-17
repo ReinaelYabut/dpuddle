@@ -1,79 +1,159 @@
- {% include 'core/navbar.html' %}
-{% load static %}
+{% include 'core/navbar.html' %}
+{#{% load static %}#}
+    {% block content %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
-{#    <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet">#}
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device.width, initial-scale=1.0">
-    <
-    <script src="https://cdn.tailwindcss.com"></script>
-
     <title>{% block title %}{% endblock %} | eVisit</title>
+    <style>
+
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'poppins', sans-serif;
+        }
+        body {
+            overflow: hidden;
+        }
+        .container {
+            width: 100%;
+            min-height: 100vh;
+            background-color: #f3f5f8;
+        }
+        .wrapper{
+            display: flex;
+            width: 100%;
+            height: 75vh;
+            justify-content: center;
+            align-items: center;
+            padding: 0 10%;
+            overflow: hidden;
+
+        }
+
+        .cols{
+            width: 80%;
+        }
+
+        .topline{
+            display: block;
+            position: relative;
+            font-size: 35px;
+            letter-spacing: 5px;
+            color: #3d535f;
+        }
+        .topline::after{
+            position: absolute;
+            content: '';
+            height: 4px;
+            width: 45px;
+            bottom: 10px;
+            background-color: #7f00ff;
+        }
+        h1{
+            display: block;
+            font-size: 6em;
+            font-weight: 900;
+            color: #3d535f;
+
+        }
+
+        .multiText{
+            color: #7f00ff;
+            text-transform: capitalize;
+        }
+
+        p{
+            display: block;
+            width: 90%;
+            font-size: 1.5em;
+            color: #3d535f;
+        }
+
+        .btns{
+            width: 100%;
+            position: relative;
+            left: 45px;
+
+        }
+        button{
+            outline: none;
+            border: none;
+            cursor: pointer;
+            font-size: 17px;
+            font-weight: 400;
+            color: #fff;
+            background-color: #26619c;
+            padding: 8px 14px;
+            margin: 40px 5px;
+            letter-spacing: 2px;
+            text-transform: capitalize;
+            box-shadow: 0 10px 15px rgba(0,0,0,2);
+            border-radius: 5px;
+        }
+        button:hover{
+            background-color: #7f00ff;
+
+        }
+
+        .imgbox{
+            position: relative;
+            width: 100%;
+            height: 100%;
+
+        }
+
+        .imgbox img{
+            position: relative;
+            height: 100%;
+            width: calc(130% - 80px);
+            top: -100px;
+            right: 50px;
+            transform: rotateY(180deg);
+            animation: animateUser 4s linear infinite;
+        }
+
+        @keyframes animateUser{
+            50%{
+                right:30px;
+                top:-90px;
+            }
+        }
+
+    </style>
 </head>
-
 <body>
-
-                </nav>
-                <div class="px-6 py-6">
-                    {% block content %}
-                       <style>
-                        .carousel-item {
-                            height: 32rem;
-                            width: 1200px;
-                            background-color: #777;
-                            color: white;
-
-                            position: relative;
-                            }
-                        .container {
-                            position: absolute;
-                            text-align: center;
-                            bottom: 0;
-                            left: 0;
-                            right: 0;
-                            padding-bottom: 50px    ;
-                            }
-
-
-
-
-                        </style>
-
-                       <div id="myCarousels" class="carousel slide" data-ride="carousel">
-   <div id="carouselExampleIndicators" class="carousel slide">
-  <div class="carousel-indicators">
-    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
-  </div>
-  <div class="carousel-inner">
-    <div class="carousel-item active">
-      <img src="https://static.vecteezy.com/system/resources/previews/018/882/560/non_2x/healthcare-and-medical-service-doctor-banner-medical-health-social-media-cover-design-realistic-hospital-webinar-template-free-vector.jpg" class="d-block w-100" alt="...">
-    </div>
-    <div class="carousel-item">
-      <img src="https://img.freepik.com/free-psd/healthcare-horizontal-banner-template_23-2148940483.jpg" class="d-block w-100" alt="...">
-    </div>
-    <div class="carousel-item">
-      <img src="https://img.freepik.com/free-vector/flat-design-medical-center-banner-template_23-2150080715.jpg" class="d-block w-100" alt="...">
-    </div>
-  </div>
-  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Previous</span>
-  </button>
-  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Next</span>
-  </button>
-</div>
-
-                    {% endblock %}
+ <div class="container">
+        <div class="wrapper">
+            <div class="cols cols0">
+                <span class="topline">Welcome to</span>
+                <h1>eVisit </h1>
+                <h1><span class="multiText">Healthcare</span></h1>
+                <p>Place to Schedule Your Hospital Procedures!</p>
+                <div class="btns">
+                    <button onclick="window.location.href='/doctor'">Find a Doctor</button>
+                    <button onclick="window.location.href='/appointment'">Book an Appointment</button>
                 </div>
+
+            </div>
+
+                <div class="cols cols1">
+                    <div class="imgbox">
+                        <img src="doctorimg.jpg">
+                    </div>
                 </div>
+
+            </div>
+        </div>
+    </div>
 
 </body>
- {% include 'core/footer.html' %}
 
-</html>
+
+{% endblock %}
+{% include 'core/footer.html' %}
