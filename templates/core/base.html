@@ -125,15 +125,41 @@
             }
         }
 
+        @keyframes fadeIn {
+        0% {
+            opacity: 0;
+        }
+        100% {
+            opacity: 1;
+        }
+        }
+
+        .fade-in {
+            animation: fadeIn 0.5s ease-in-out 0.25s both;
+        }
+
+        @keyframes fadetitle {
+        0% {
+            opacity: 0;
+        }
+        100% {
+            opacity: 1;
+        }
+        }
+
+        .fade-title {
+            animation: fadeIn 1s ease-in-out 0.5s both;
+        }
+
     </style>
 </head>
 <body>
  <div class="container">
         <div class="wrapper">
-            <div class="cols cols0">
+            <div class="cols cols0 fade-in">
                 <span class="topline">Welcome to</span>
-                <h1>eVisit </h1>
-                <h1><span class="multiText">Healthcare</span></h1>
+                <h1 class="fade-title">eVisit </h1>
+                <h1 class="fade-title"><span class="multiText">Healthcare</span></h1>
                 <p>Place to Schedule Your Hospital Procedures!</p>
                 <div class="btns">
                     <button onclick="window.location.href='/doctor'">Find a Doctor</button>
