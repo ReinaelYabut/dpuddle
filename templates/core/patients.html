@@ -2,21 +2,96 @@
 
 {% block content %}
 <style>
-h1{
-    font-size: 23px;
+
+
+
+
+h1 {
+      background-color: #007bff;
+      color: #fff;
+      padding: 20px;
+      text-align: center;
+      font-weight: bold;
+      font-size: 36px;
+      font-family: "Arial Rounded MT Bold", Times, serif;
+        }
+  body
+  {
+  min-height: 100vh;
+  width: 100%;
+  background: #c8e8e9;
+  {#display: flex;#}
+  {#align-items: center;#}
+  {##}
+  {##}
+  {#    flex-direction: column; /* Stack content vertically */#}
+  {#justify-content: center; /* Start from the top of the page */#}
+
 }
+
+
+.text-container {
+            max-width: 400px; /* Adjust the width as needed */
+        }
+
 </style>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <h1> Patient</h1>
+    <title>Patients</title>
+    <style>
+        /* Define CSS styles for the table and its elements */
+        .table {
+            width: 100%;
+            border-collapse: collapse;
+        }
 
+        .table th, .table td {
+            border: 1px solid #ccc;
+            padding: 8px;
+            text-align: left;
+        }
+
+        .table th {
+            background-color: #f0f0f0;
+            font-weight: bold;
+        }
+    </style>
 </head>
 <body>
-Patients
+    <h1>Patients</h1>
+
+  <style>
+table, th, td {
+  border: 1px solid;
+}
+</style>
+</head>
+<body>
+
+
+<table>
+  <tr>
+    <th>Patients No.</th>
+    <th>Date of visitation</th>
+      <th>Status</th>
+  </tr>
+  <tr>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td></td>
+    <td></td>
+  </tr>
+</table>
+
 </body>
 </html>
+
 
 {% include 'core/footer.html' %}
 {% endblock %}

@@ -14,7 +14,7 @@ from authuser.models import User
 from django.contrib.auth.decorators import login_required
 from persons.decorators import unaunthenticated_user
 
-from .models import contactform, medicinelib, medicine_detail
+from .models import contactform, medicinelib, medicine_detail, appointmentsform, rooms, room_details
 
 
 # Create your views here.
@@ -135,12 +135,27 @@ def appointments(request):
     return render(request, 'core/appointments.html')
 
 def room_details(request, room_id):
-    room = Rooms.objects.get(id=room_id)
+    room = Rooms.objects.all
     return render(request, 'core/room_details.html', {'room': room})
 
 def patients(request):
     return render(request, 'core/patients.html')
 
+def appointments(request):
+    if request.method=="POST":
+        post=appointmentsform()
+        post.name = request.POST['name']
+        post.phone = request.POST['phone']
+        post.email = request.POST['email']
+        post.date = request.POST['date']
+        post.time = request.POST['time']
+        post.doctor = request.POST['doctor']
+        post.room = request.POST['room']
+
+        post.save()
+        return render(request, 'core/appointments.html')
+    else:
+        return render(request, 'core/appointments.html')
 # def doctor_list(request):
 #     search_query = request.GET.get('search')
 #     if search_query:

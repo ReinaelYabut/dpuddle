@@ -32,4 +32,33 @@ class medicine_detail(models.Model):
     def __str__(self):
         return self.medicine.name
 
+class appointmentsform(models.Model):
+    name = models.CharField(max_length=100)
+    phone = models.CharField(max_length=100)
+    email = models.EmailField(max_length=100)
+    date = models.TextField(default='')
+    time = models.TextField(default='')
+    doctor = models.CharField(max_length=100)
+    room = models.CharField(max_length=100)
 
+    def __str__(self):
+        return self.name
+
+
+class room_details(models.Model):
+
+
+    def __str__(self):
+        return self.name
+
+class rooms(models.Model):
+    room_number = models.IntegerField()
+    availability = models.BooleanField(default=True)
+    room_type = models.CharField(max_length=50)
+    num_beds = models.IntegerField()
+    bed_type = models.CharField(max_length=50)
+    description = models.TextField()
+    price = models.DecimalField(max_digits=10, decimal_places=2)
+
+    def __str__(self):
+        return self.name
