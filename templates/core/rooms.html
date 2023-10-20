@@ -44,7 +44,17 @@
             text-align: center;
             padding: 20px;
         }
+        .btn
+        {
+            border: 1px solid #0a3622;
+            padding: 10px 20px;
+            background: #0a3622;
+            font-size: 20px;
+            font-family:"montserrat";
+            font-weight: bold;
+            color: #adb5bd;
 
+        }
         h1 {
             margin: 0;
         }
@@ -105,33 +115,46 @@
         <h1>Hospital Room Availability</h1>
     </header>
     <div class="container">
-        <div class="room">
+         <div class="room">
+             {% for room in rooms %}
+
+         <a href="room_details.html/{{ room.id }}">
             <img src="https://scontent.fmnl9-3.fna.fbcdn.net/v/t1.15752-9/370223248_1265642627482092_5670855871271944805_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=8cd0a2&_nc_eui2=AeFOf3kLvJRz3sQMb2sWdnO_MbRLOP2pTrYxtEs4_alOtsn3FVkT6kRpcCyojYinydoaHt9NQSKXPFKfDQYuQIJK&_nc_ohc=to14xkJzXDcAX_85XXq&_nc_ht=scontent.fmnl9-3.fna&oh=03_AdQgXtbqLb1uQqtJGdBfoUO68tkYUNJpqbKcga_hVNUULA&oe=6550B5EF" alt="Room 101">
             <div class="room-details">
                 <div class="room-number">Room 101</div>
-                <div class="availability">Availability: <span id="room101">Available</span></div>
-                <button class="details-button" onclick="location.href='room_details.html'">Details</button>
-                <button class="reserve-button" onclick="toggleAvailability('room101')">Toggle</button>
+
+               <button class="btn btn1">Details</button>
+
             </div>
-        </div>
+            </a>
+
+                 {% endfor %}
+
+         </div>
         <div class="room">
-            <img src="https://scontent.fmnl9-2.fna.fbcdn.net/v/t1.15752-9/304930773_1163879800885942_6865892153993837260_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=8cd0a2&_nc_eui2=AeFBD9dQWQ8a1IzSvdMiEvSkSBYET1NW3ddIFgRPU1bd14imLwgFnqSaUb4vfjdSCEgE5EYZU6dmJClpyvMcpK9B&_nc_ohc=ULKIktsKLC0AX-zBN3q&_nc_oc=AQm82KF34hlQgmqr-kwym7ukHq226oHUEuE6WE3ecCOP61dXmUKss6TJAU1QlIlTluY&_nc_ht=scontent.fmnl9-2.fna&oh=03_AdSe6dUz95wYlK7dUxbZYR6bN9W4c8CN-2jzatF1J-ZS8g&oe=6550B22E" alt="Room 102">
+          <a href="room_details.html/{{ room.id }}">
+            <img src="https://scontent.fmnl9-3.fna.fbcdn.net/v/t1.15752-9/370223248_1265642627482092_5670855871271944805_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=8cd0a2&_nc_eui2=AeFOf3kLvJRz3sQMb2sWdnO_MbRLOP2pTrYxtEs4_alOtsn3FVkT6kRpcCyojYinydoaHt9NQSKXPFKfDQYuQIJK&_nc_ohc=to14xkJzXDcAX_85XXq&_nc_ht=scontent.fmnl9-3.fna&oh=03_AdQgXtbqLb1uQqtJGdBfoUO68tkYUNJpqbKcga_hVNUULA&oe=6550B5EF" alt="Room 101">
             <div class="room-details">
                 <div class="room-number">Room 102</div>
-                <div class="availability">Availability: <span id="room102">Unavailable</span></div>
-                <button class="details-button" onclick="location.href='room_details.html'">Details</button>
-                <button class="reserve-button" onclick="toggleAvailability('room102')">Toggle</button>
+
+               <button class="btn btn1">Details</button>
+
             </div>
+            </a>
         </div>
-         <div class="room">
-            <img src="https://scontent.fmnl9-4.fna.fbcdn.net/v/t1.15752-9/387466452_174057649083823_6907263864473038128_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=8cd0a2&_nc_eui2=AeEwDWYdARILKl9caQINOYOuB0KEpPqoMMQHQoSk-qgwxF0eM_tsuBykolg8gHPusEXhYqseV-zYpPIlc8ZaCIhW&_nc_ohc=v9UtrVD7FSwAX_q0m-u&_nc_ht=scontent.fmnl9-4.fna&oh=03_AdTLpY-1_5s-VjcwZqSVULE84O6UhhfWhQuGLi46Z752mg&oe=6550992E" alt="Room 101">
+                 <div class="room">
+          <a href="room_details.html/{{ room.id }}">
+            <img src="https://scontent.fmnl9-3.fna.fbcdn.net/v/t1.15752-9/370223248_1265642627482092_5670855871271944805_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=8cd0a2&_nc_eui2=AeFOf3kLvJRz3sQMb2sWdnO_MbRLOP2pTrYxtEs4_alOtsn3FVkT6kRpcCyojYinydoaHt9NQSKXPFKfDQYuQIJK&_nc_ohc=to14xkJzXDcAX_85XXq&_nc_ht=scontent.fmnl9-3.fna&oh=03_AdQgXtbqLb1uQqtJGdBfoUO68tkYUNJpqbKcga_hVNUULA&oe=6550B5EF" alt="Room 101">
             <div class="room-details">
                 <div class="room-number">Room 103</div>
-                <div class="availability">Availability: <span id="room101">Available</span></div>
-                <button class="details-button" onclick="location.href='room_details.html'">Details</button>
-                <button class="reserve-button" onclick="toggleAvailability('room101')">Toggle</button>
+
+               <button class="btn btn1">Details</button>
+
             </div>
+            </a>
         </div>
+
+
 
         <!-- Add more room divs as needed -->
     </div>

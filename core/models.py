@@ -45,7 +45,11 @@ class appointmentsform(models.Model):
         return self.name
 
 
+
+
+
 class room_details(models.Model):
+
 
 
     def __str__(self):

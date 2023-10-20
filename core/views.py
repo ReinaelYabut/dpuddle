@@ -14,7 +14,7 @@ from authuser.models import User
 from django.contrib.auth.decorators import login_required
 from persons.decorators import unaunthenticated_user
 
-from .models import contactform, medicinelib, medicine_detail, appointmentsform
+from .models import contactform, medicinelib, medicine_detail, appointmentsform, rooms, room_details
 
 
 # Create your views here.
@@ -136,6 +136,9 @@ def appointments(request):
 
 def room_details(request, room_id):
     room = Rooms.objects.get(id=room_id)
+    detail = room.detail
+
+
     return render(request, 'core/room_details.html', {'room': room})
 
 def patients(request):
