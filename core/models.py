@@ -32,4 +32,12 @@ class medicine_detail(models.Model):
     def __str__(self):
         return self.medicine.name
 
+class appointmentsform(models.Model):
+    name = models.CharField(max_length=100)
+    phone = models.CharField(max_length=100)
+    email = models.EmailField(max_length=100)
+    doctor = models.CharField(max_length=100)
+    room = models.CharField(max_length=100)
 
+    def __str__(self):
+        return self.name
