@@ -8,7 +8,7 @@
 
 h1 {
       background-color: #007bff;
-      color: #fff;
+      color: #ffffff;
       padding: 20px;
       text-align: center;
       font-weight: bold;
@@ -64,28 +64,56 @@ h1 {
 <body>
     <h1>Patients</h1>
 
+
   <style>
-table, th, td {
-  border: 1px solid;
+table, td, th {
+  border: 1px solid #000000;
+  text-align: left;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th, td {
+  padding: 15px;
 }
 </style>
 </head>
 <body>
 
-
+<h2>List of recent 5 Patients</h2>
 <table>
   <tr>
-    <th>Patients No.</th>
-    <th>Date of visitation</th>
-      <th>Status</th>
+    <th>Patient Room No.</th>
+    <th>Date of Visitation</th>
+    <th>Status</th>
+    <th>Doctor of Patient</th>
   </tr>
   <tr>
-    <td></td>
-    <td></td>
+    <td>Peter</td>
+    <td>Griffin</td>
+    <td>Completed</td>
+    <td>N/a</td>
   </tr>
   <tr>
-    <td></td>
-    <td></td>
+    <td>Lois</td>
+    <td>Griffin</td>
+    <td>Completed</td>
+    <td>N/a</td>
+  </tr>
+  <tr>
+    <td>Joe</td>
+    <td>Swanson</td>
+    <td>Ongoing</td>
+    <td>N/a</td>
+  </tr>
+  <tr>
+    <td>Cleveland</td>
+    <td>Brown</td>
+    <td>Completed</td>
+    <td>N/a</td>
   </tr>
 </table>
 
