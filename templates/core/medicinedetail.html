@@ -82,7 +82,7 @@
         right: 20px;
     }
 
-    .button input[type="mybutton"] {
+    .mybutton input {
         color: #fff;
         font-size: 18px;
         outline: none;
@@ -93,7 +93,7 @@
 
     }
 
-    .button input[type="mybutton"]:hover {
+    .mybutton input:hover {
         background: #5029bc;
     }
 
@@ -165,10 +165,12 @@
             <p class="fade-in-Des">{{ detail.additional_info }}</p>
             <h4 class="fade-in">How should I take {{ medicine.name }}?</h4>
             <p class="fade-in-Des">{{ detail.usage_info }}</p>
-            <p class="fst-italic fade-in-Des">All material copyright eVisit HealthCare 2020. Terms and conditions of use. The contents herein are for informational purposes only. Always seek the advice of your physician or other qualified health provider with any questions you may have regarding a medical condition.</p>
-{#            <div class="mybutton" style="position: absolute; bottom: 20px; right: 20px;">#}
-{#                <input type="button" id="btnShowMsg" value="Back to Medicine List" onClick="window.location.href='/medicine'" />#}
-{#            </div>#}
+            <p class="fst-italic fade-in-Des" style="margin-bottom: 25px;">All material copyright eVisit HealthCare 2020. Terms and conditions of use. The contents herein are for informational purposes only. Always seek the advice of your physician or other qualified health provider with any questions you may have regarding a medical condition.</p>
+
+            <div class="mybutton" style="position: absolute; bottom: 20px; right: 20px;">
+                <input type="button" id="mybutton"  value="Back to Medicine List" onClick="window.location.href='/medicine'" />
+            </div>
+
             </div>
         </div>
     </div>
