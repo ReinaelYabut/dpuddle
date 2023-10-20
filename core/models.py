@@ -36,6 +36,8 @@ class appointmentsform(models.Model):
     name = models.CharField(max_length=100)
     phone = models.CharField(max_length=100)
     email = models.EmailField(max_length=100)
+    date = models.TextField(default='')
+    time = models.TextField(default='')
     doctor = models.CharField(max_length=100)
     room = models.CharField(max_length=100)
 

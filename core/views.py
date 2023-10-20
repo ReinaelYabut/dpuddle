@@ -147,6 +147,8 @@ def appointments(request):
         post.name = request.POST['name']
         post.phone = request.POST['phone']
         post.email = request.POST['email']
+        post.date = request.POST['date']
+        post.time = request.POST['time']
         post.doctor = request.POST['doctor']
         post.room = request.POST['room']
 
