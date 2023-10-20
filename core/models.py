@@ -41,6 +41,9 @@ class appointmentsform(models.Model):
     doctor = models.CharField(max_length=100)
     room = models.CharField(max_length=100)
 
+    def __str__(self):
+        return self.name
+
 
 class room_details(models.Model):
 
