@@ -14,7 +14,7 @@ from authuser.models import User
 from django.contrib.auth.decorators import login_required
 from persons.decorators import unaunthenticated_user
 
-from .models import contactform, medicinelib, medicine_detail, appointmentsform, rooms, room_details
+from .models import contactform, medicinelib, medicine_detail, appointmentsform, Room, room_details
 
 
 # Create your views here.
@@ -146,10 +146,16 @@ def medicinedetail(request, med_id):
 
 
 def rooms(request):
-    return render(request, 'core/rooms.html')
+    # rooms.object
+    room = Room.objects.all()
+    print(room)
+    context = {
+        'room': room
+    }
+    return render(request, 'core/rooms.html', context)
 
-def appointments(request):
-    return render(request, 'core/appointments.html')
+# def appointments(request):
+#     return render(request, 'core/appointments.html')
 
 def room_details(request, room_id):
     room = Rooms.objects.all
@@ -159,6 +165,8 @@ def patients(request):
     return render(request, 'core/patients.html')
 
 def appointments(request):
+    doctors = Doctor.objects.all()
+    print(doctors)
     if request.method=="POST":
         post=appointmentsform()
         post.name = request.POST['name']
@@ -172,7 +180,10 @@ def appointments(request):
         post.save()
         return render(request, 'core/appointments.html')
     else:
-        return render(request, 'core/appointments.html')
+        context = {
+            'doctors': doctors
+        }
+        return render(request, 'core/appointments.html', context)
 # def doctor_list(request):
 #     search_query = request.GET.get('search')
 #     if search_query:

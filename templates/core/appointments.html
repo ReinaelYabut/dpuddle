@@ -55,7 +55,7 @@
         <div class="formbold-mb-5">
         <label for="email" class="formbold-form-label"> Date </label>
         <input
-          type="text"
+          type="date"
           name="date"
           id="date"
           placeholder="Enter your preferred date"
@@ -65,7 +65,7 @@
         <div class="formbold-mb-5">
         <label for="email" class="formbold-form-label"> Time </label>
         <input
-          type="text"
+          type="time"
           name="time"
           id="time"
           placeholder="Enter your preferred time"
@@ -80,30 +80,25 @@
         </label>
         <div class="flex flex-wrap formbold--mx-3">
           <div class="w-full sm:w-half formbold-px-3">
-            <div class="formbold-mb-5">
-              <input
-                type="text"
-                name="doctor"
-                id="doctor"
-                placeholder="Enter doctor"
-                class="formbold-form-input"
-              />
-            </div>
+           <div class="dropdown">
+  <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Choose your preferred doctor
+  </button>
+  <ul class="dropdown-menu">
+    <li><a class="dropdown-item" href="#">Doctor 1</a></li>
+    <li><a class="dropdown-item" href="#">Doctor 2</a></li>
+    <li><a class="dropdown-item" href="#">Doctor 3</a></li>
+  </ul>
+</div>
           </div>
-          <div class="w-full sm:w-half formbold-px-3">
-            <div class="formbold-mb-5">
-              <input
-                type="text"
-                name="room"
-                id="room"
-                placeholder="Enter room"
-                class="formbold-form-input"
-              />
-            </div>
-          </div>
-        </div>
-      </div>
 
+          <select>
+                <option>Choose Doctor</option>
+                {% for doctor in doctors %}
+                	<option value='{{ doctor }}'>{{ doctor }} </option>
+                {% endfor %}
+
+          </select>
       <div>
         <button class="formbold-btn" onClick="popMessage()">Book Appointment</button>
 
