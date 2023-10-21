@@ -122,6 +122,23 @@ def medicines(request):
     medicine = medicinelib.objects.all()
     return render(request, 'core/medicines.html', {'medicine': medicine})
 
+
+def medfilterview(request):
+    medicine_contains_query = request.GET.get('medicine_contains')
+
+    if medicine_contains_query and medicine_contains_query.strip():
+        queryset = medicinelib.objects.filter(name__icontains=medicine_contains_query)
+    else:
+        queryset = medicinelib.objects.all()
+
+    context = {
+        'queryset': queryset,
+        'medicine_contains_query': medicine_contains_query,
+    }
+
+    return render(request, 'core/medicines.html', context)
+
+
 def medicinedetail(request, med_id):
     medicine = medicinelib.objects.get(pk=med_id)
     detail = medicine.detail
