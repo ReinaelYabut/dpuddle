@@ -118,7 +118,7 @@
          <div class="room">
              {% for room in room %}
 
-         <a href="room_details.html/{{ room.id }}">
+         <a href="{% url 'core:room_details' room.id %}">
             <img src="https://scontent.fmnl9-3.fna.fbcdn.net/v/t1.15752-9/370223248_1265642627482092_5670855871271944805_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=8cd0a2&_nc_eui2=AeFOf3kLvJRz3sQMb2sWdnO_MbRLOP2pTrYxtEs4_alOtsn3FVkT6kRpcCyojYinydoaHt9NQSKXPFKfDQYuQIJK&_nc_ohc=to14xkJzXDcAX_85XXq&_nc_ht=scontent.fmnl9-3.fna&oh=03_AdQgXtbqLb1uQqtJGdBfoUO68tkYUNJpqbKcga_hVNUULA&oe=6550B5EF" alt="Room 101">
             <div class="room-details">
                 <div class="room-number">{{ room }}</div>

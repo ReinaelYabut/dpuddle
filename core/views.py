@@ -158,7 +158,8 @@ def rooms(request):
 #     return render(request, 'core/appointments.html')
 
 def room_details(request, room_id):
-    room = Rooms.objects.all
+    room = Room.objects.get(pk=room_id)
+    print(room)
     return render(request, 'core/room_details.html', {'room': room})
 
 def patients(request):
