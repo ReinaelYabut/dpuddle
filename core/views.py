@@ -145,7 +145,7 @@ def medicinedetail(request, med_id):
     return render(request, 'core/medicinedetail.html', {'medicine': medicine, 'detail': detail})
 
 
-def rooms(request):
+def room_list(request):
     # rooms.object
     room = Room.objects.all()
     print(room)

@@ -52,13 +52,19 @@ class room_details(models.Model):
         return self.name
 
 class Room(models.Model):
-    room_number = models.IntegerField()
+    room_number = models.IntegerField(unique=True)
+
+
+    image= models.ImageField(upload_to='roompic', blank=True, null=True)
+
     availability = models.BooleanField(default=True)
     room_type = models.CharField(max_length=50)
     num_beds = models.IntegerField()
     bed_type = models.CharField(max_length=50)
     description = models.TextField()
     price = models.DecimalField(max_digits=10, decimal_places=2)
-
-    def __str__(self):
-        return str(self.room_number)
+def clean(self):
+    super().clean()
+    same_room_number = Room.objects.filter(room_number=self.room_number).exclude(pk=self.pk)
+    if same_room_number.exists():
+        raise ValidationError("Room with this room number already exists.")
