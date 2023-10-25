@@ -1,256 +1,185 @@
 {% include 'core/navbar.html' %}
 
 {% block content %}
-<style>
-
-
-
-
-h1 {
-      background-color: #007bff;
-      color: #ffffff;
-      padding: 8px;
-      text-align: center;
-      font-weight: bold;
-      font-size: 36px;
-      font-family: "Arial Rounded MT Bold", Times, serif;
-        }
-  body
-  {
-  min-height: 100vh;
-  width: 100%;
-  background: #c8e8e9;
-  {#display: flex;#}
-  {#align-items: center;#}
-  {##}
-  {##}
-  {#    flex-direction: column; /* Stack content vertically */#}
-  {#justify-content: center; /* Start from the top of the page */#}
-
-}
-
-
-.text-container {
-            max-width: 400px; /* Adjust the width as needed */
-        }
-h2 {
-      background-color: #c8e8e9;
-      color: #000000;
-      padding: 20px;
-      text-align: -webkit-left;
-      font-weight: bold;
-      font-size: 22px;
-      font-family: "Arial Rounded MT Bold", Times, serif;
-        }
-
-</style>
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Patients</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
     <style>
-        /* Define CSS styles for the table and its elements */
-        .table {
+        h1 {
+            background-color: #007bff;
+            color: #ffffff;
+            padding: 8px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 36px;
+            font-family: "Arial Rounded MT Bold", Times, serif;
+        }
+
+        body {
+            min-height: 100vh;
             width: 100%;
+            background: #c8e8e9;
+        }
+
+        .text-container {
+            max-width: 400px;
+        }
+
+        h2 {
+            background-color: #c8e8e9;
+            color: #000000;
+            padding: 10px;
+            text-align: left;
+            font-weight: bold;
+            font-size: 22px;
+            font-family: "Arial Rounded MT Bold", Times, serif;
+        }
+
+        table {
             border-collapse: collapse;
+            width: 100%;
         }
 
         .table th, .table td {
-            border: 1px solid #ccc;
-            padding: 8px;
-            text-align: left;
+            border: 1px solid #000000;
+            padding: 10px;
+            text-align: center;
         }
 
         .table th {
-            background-color: #f0f0f0;
-            font-weight: bold;
+            background-color: #c8e8e9;
         }
-        /* Style for the form */
-.search-form {
-    text-align: right;
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        /* Style for "completed" status */
+        .completed {
+            background-color: #5cb85c;
+            color: white;
+        }
+
+        /* Style for "ongoing" status */
+        .ongoing {
+            background-color: #f0ad4e;
+            color: white;
+        }
+
+        .button {
+  background-color: #007bff; /* Green */
+  border: none;
+  color: white;
+  padding: 8px 16px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 12px;
+  margin: 4px 6px;
+  cursor: pointer;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
 }
-
-/* Style for the input field */
-.search-input {
-    padding: 1px 10px;
-    width: 200px;
-    border: 1px solid #ccc;
-    border-radius: 100px;
+        .button:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
 }
-
-/* Style for the submit button */
-.search-button {
-    padding: 1px 10px;
-    background-color: #0074d9;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-}
-
-/* Hover effect for the button */
-.search-button:hover {
-    background-color: #0046ff;
-}
-
- table {
-    border-collapse: collapse;
-    width: 100%;
-  }
-
-  .table th, td {
-    border: 1px solid #000;
-    padding: 10px;
-    text-align: left;
-  }
-
-  .table th {
-    background-color: #c8e8e9;
-  }
-
-  tr:nth-child(even) {
-    background-color: #f2f2f2;
-  }
-
-  /* Style for "completed" status */
-  .completed {
-    background-color: #5cb85c; /* Green background for "completed" */
-    color: white;
-  }
-
-  /* Style for "ongoing" status */
-  .ongoing {
-    background-color: #f0ad4e; /* Orange background for "ongoing" */
-    color: white;
-  }
-
     </style>
 </head>
+<body>
 
-<body>
     <h1>Patients</h1>
-<head>
-    <title>Search Bar Example</title>
-    <link rel="stylesheet" type="text/css" href="styles.css">
-</head>
-<body>
     <form class="search-form">
         <input type="text" class="search-input" placeholder="Patient Id">
-        <button type="submit" class="search-button">Search</button>
+        <button type="submit" class="button">Search</button>
+
     </form>
 
-</body>
-
-<!DOCTYPE html>
-<html>
-<head>
-<style>
-  table {
-    border-collapse: initial;
-    width: 100%;
-  }
-
-  table, th, td {
-    border: 1px solid #000000;
-  }
-
-  th, td {
-    padding: 10px;
-    text-align: center;
-  }
-
-</style>
-</head>
-<body>
-<h2>List of Recent Patients</h2>
-<table class="table">
-  <tr>
-    <th>Patient ID</th>
-    <th>Date of Visitation</th>
-    <th>Status</th>
-    <th>Doctor of Patient</th>
-    <th>Records of Patient</th>
-  </tr>
-  <tr>
-    <td>1010</td>
-    <td>October 15, 2023</td>
-    <td>Ongoing</td>
-    <td>N/A</td>
-    <td>N/A</td>
-  </tr>
-  <tr>
-    <td>1009</td>
-    <td>October 14, 2023</td>
-    <td class="ongoing">Ongoing</td>
-    <td>N/A</td>
-    <td>N/A</td>
-  </tr>
-  <tr>
-    <td>1008</td>
-    <td>October 12, 2023</td>
-    <td>Ongoing</td>
-    <td>N/A</td>
-    <td>N/A</td>
-  </tr>
-  <tr>
-    <td>1007</td>
-    <td>October 10, 2023</td>
-    <td>Completed</td>
-    <td>N/A</td>
-    <td>N/A</td>
-  </tr>
-  <tr>
-    <td>1006</td>
-    <td>October 9, 2023</td>
-    <td>Completed</td>
-    <td>N/A</td>
-    <td>N/A</td>
-  </tr>
-  <tr>
-    <td>1005</td>
-    <td>October 8, 2023</td>
-    <td>Completed</td>
-    <td>N/A</td>
-    <td>N/A</td>
-  </tr>
-  <tr>
-    <td>1004</td>
-    <td>October 8, 2023</td>
-    <td>Completed</td>
-    <td>N/A</td>
-    <td>N/A</td>
-  </tr>
-  <tr>
-    <td>1003</td>
-    <td>October 7, 2023</td>
-    <td>Completed</td>
-    <td>N/A</td>
-    <td>N/A</td>
-  </tr>
-  <tr>
-    <td>1002</td>
-    <td>October 6, 2023</td>
-    <td>Completed</td>
-    <td>N/A</td>
-    <td>N/A</td>
-  </tr>
-  <tr>
-    <td>1001</td>
-    <td>October 5, 2023</td>
-    <td>Completed</td>
-    <td>N/A</td>
-    <td>N/A</td>
-  </tr>
-</table>
-
+    <h2>List of Recent Patients</h2>
+    <table class="table">
+        <tr>
+            <th>Patient ID</th>
+            <th>Date of Visitation</th>
+            <th>Status</th>
+            <th>Doctor of Patient</th>
+            <th>Records of Patient</th>
+        </tr>
+        <tr>
+            <td>1010</td>
+            <td>October 15, 2023</td>
+            <td>Ongoing</td>
+            <td>N/A</td>
+            <td>N/A</td>
+        </tr>
+         <tr>
+            <td>1009</td>
+            <td>October 15, 2023</td>
+            <td>Ongoing</td>
+            <td>N/A</td>
+            <td>N/A</td>
+        </tr>
+         <tr>
+            <td>1008</td>
+            <td>October 15, 2023</td>
+            <td>Ongoing</td>
+            <td>N/A</td>
+            <td>N/A</td>
+        </tr>
+         <tr>
+            <td>1007</td>
+            <td>October 15, 2023</td>
+            <td>Ongoing</td>
+            <td>N/A</td>
+            <td>N/A</td>
+        </tr>
+         <tr>
+            <td>1006</td>
+            <td>October 15, 2023</td>
+            <td>Ongoing</td>
+            <td>N/A</td>
+            <td>N/A</td>
+        </tr>
+         <tr>
+            <td>1005</td>
+            <td>October 15, 2023</td>
+            <td>Ongoing</td>
+            <td>N/A</td>
+            <td>N/A</td>
+        </tr>
+         <tr>
+            <td>1004</td>
+            <td>October 15, 2023</td>
+            <td>Ongoing</td>
+            <td>N/A</td>
+            <td>N/A</td>
+        </tr>
+         <tr>
+            <td>1003</td>
+            <td>October 15, 2023</td>
+            <td>Ongoing</td>
+            <td>N/A</td>
+            <td>N/A</td>
+        </tr>
+         <tr>
+            <td>1002</td>
+            <td>October 15, 2023</td>
+            <td>Ongoing</td>
+            <td>N/A</td>
+            <td>N/A</td>
+        </tr>
+         <tr>
+            <td>1001</td>
+            <td>October 15, 2023</td>
+            <td>Ongoing</td>
+            <td>N/A</td>
+            <td>N/A</td>
+        </tr>
+        <!-- Add more patient rows here -->
+    </table>
 </body>
 </html>
-
-
-
 
 {% include 'core/footer.html' %}
 {% endblock %}
