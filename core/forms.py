@@ -12,7 +12,7 @@ class SignupForm(UserCreationForm):
         fields = ('email', 'password1','password2')
 
 
-class CreateUserForm(forms.ModelForm):#changed from UserCreationForm to ModelForm
+class CreateUserForm(UserCreationForm):#changed from UserCreationForm to ModelForm
     password1 = forms.CharField(label='Password', widget=forms.PasswordInput(attrs={
         "class": "form-control",
     }))

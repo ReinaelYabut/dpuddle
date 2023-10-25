@@ -14,7 +14,7 @@ from authuser.models import User
 from django.contrib.auth.decorators import login_required
 from persons.decorators import unaunthenticated_user
 
-from .models import contactform, medicinelib, medicine_detail, appointmentsform
+from .models import contactform, medicinelib, medicine_detail, appointmentsform, Room, room_details
 
 
 # Create your views here.
@@ -122,26 +122,52 @@ def medicines(request):
     medicine = medicinelib.objects.all()
     return render(request, 'core/medicines.html', {'medicine': medicine})
 
+
+def medfilterview(request):
+    medicine_contains_query = request.GET.get('medicine_contains')
+
+    if medicine_contains_query and medicine_contains_query.strip():
+        queryset = medicinelib.objects.filter(name__icontains=medicine_contains_query)
+    else:
+        queryset = medicinelib.objects.all()
+
+    context = {
+        'queryset': queryset,
+        'medicine_contains_query': medicine_contains_query,
+    }
+
+    return render(request, 'core/medicines.html', context)
+
+
 def medicinedetail(request, med_id):
     medicine = medicinelib.objects.get(pk=med_id)
     detail = medicine.detail
     return render(request, 'core/medicinedetail.html', {'medicine': medicine, 'detail': detail})
 
 
-def rooms(request):
-    return render(request, 'core/rooms.html')
+def room_list(request):
+    # rooms.object
+    room = Room.objects.all()
+    print(room)
+    context = {
+        'room': room
+    }
+    return render(request, 'core/rooms.html', context)
 
-def appointments(request):
-    return render(request, 'core/appointments.html')
+# def appointments(request):
+#     return render(request, 'core/appointments.html')
 
 def room_details(request, room_id):
-    room = Rooms.objects.get(id=room_id)
+    room = Room.objects.get(pk=room_id)
+    print(room)
     return render(request, 'core/room_details.html', {'room': room})
 
 def patients(request):
     return render(request, 'core/patients.html')
 
 def appointments(request):
+    doctors = Doctor.objects.all()
+    print(doctors)
     if request.method=="POST":
         post=appointmentsform()
         post.name = request.POST['name']
@@ -155,7 +181,10 @@ def appointments(request):
         post.save()
         return render(request, 'core/appointments.html')
     else:
-        return render(request, 'core/appointments.html')
+        context = {
+            'doctors': doctors
+        }
+        return render(request, 'core/appointments.html', context)
 # def doctor_list(request):
 #     search_query = request.GET.get('search')
 #     if search_query:

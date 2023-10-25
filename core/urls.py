@@ -15,12 +15,15 @@ urlpatterns = [
     path('logout/', views.logoutUser, name='logout'),
     path('privacypolicy/', views.privacypolicy, name='privacypolicy'),
     path('medicine/', views.medicines, name='medicines'),
+
+    path('medicine/search/', views.medfilterview, name='medfilterview'),
+
     path('medicinedetail/<int:med_id>/', views.medicinedetail, name='medicinedetail'),
 
     path('user/', views.userPage, name='user-page'),
-    path('room/', views.rooms, name='rooms'),
+    path('room/', views.room_list, name='rooms'),
     path('appointment/', views.appointments, name='appointments'),
-    path('room/<int:room_details>/', views.room_details, name='room_details'),
+    path('room/<int:room_id>/', views.room_details, name='room_details'),
     path('patient/', views.patients, name='patients'),
     # path('search/', views.searchbar, name='search'),
 ]

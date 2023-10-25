@@ -1,27 +1,68 @@
-<!DOCTYPE html>
-<html l<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Room Details</title>
-</head>
-<body>
-    <h1>Room Details</h1>
-    <p>Room Number: {{ room.room_number }}</p>
-    <p>Availability: {{ room.availability }}</p>
-    <!-- Add more room details here as needed -->
-</body>
-</html>ang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Room Details</title>
-</head>
-<body>
-    <h1>Room Details</h1>
-    <p>Room Number: {{ room.room_number }}</p>
-    <p>Availability: {{ room.availability }}</p>
-    <!-- Add more room details here as needed -->
-</body>
-</html>
+{% extends 'core/base.html' %}
+
+{% block content %}
+
+ <style>
+    /* Style for the room details container */
+    .room-details {
+                    max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color:#c8e8e9 ;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
+    }
+
+    /* Style for the image */
+    .room-details img {
+        max-width: 300px;
+        height: auto;
+        margin-right: 20px;
+    }
+
+    /* Style for the room info container */
+    .room-info {
+        flex: 1;
+    }
+
+    /* Style for the room number */
+    .room-number {
+        font-size: 24px;
+        font-weight: bold;
+        margin-bottom: 10px;
+    }
+
+    /* Style for the room capacity */
+    .room-capacity {
+        font-size: 18px;
+        margin-bottom: 10px;
+    }
+
+    /* Style for the room description */
+    .room-description {
+        font-size: 16px;
+    }
+
+    /* Style for the page title */
+    h1 {
+        font-size: 36px;
+        margin: 20px 0;
+    }
+</style>
+
+<h1>Room Details</h1>
+
+<div class="room-details">
+    <img src="{{ room.image.url }}" alt="roompic">
+    <div class="room-info">
+        <div class="room-number">Room Number: {{ room.room_number }}</div>
+        <div class="room-capacity">Max Capacity: {{ room.capacity }}</div>
+        <div class="room-description">{{ room.description }}</div>
+                        <input type="button" id="mybutton"  value="Back to Medicine List" onClick="window.location.href='/medicine'" />
+
+    </div>
+</div>
+<style>
+
+</style>
+{% endblock %}
