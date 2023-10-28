@@ -1,0 +1,158 @@
+{% include 'core/navbar.html' %}
+
+{% block content %}
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hospital Room Availability</title>
+    <style>
+        body
+        {
+  min-height: 100vh;
+  width: 100%;
+  background: #c8e8e9;
+  {#display: flex;#}
+  {#align-items: center;#}
+  {##}
+  {##}
+  {#    flex-direction: column; /* Stack content vertically */#}
+  {#justify-content: center; /* Start from the top of the page */#}
+
+}
+
+
+.text-container {
+            max-width: 400px; /* Adjust the width as needed */
+        }
+
+
+        {
+            font-family: "Open sans", sans-serif;
+            background-color: #056158 ;
+            color: #fff;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #3498DB   ;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+        }
+        .btn
+        {
+            border: 1px solid #0a3622;
+            padding: 10px 20px;
+            background: #0a3622;
+            font-size: 20px;
+            font-family:"montserrat";
+            font-weight: bold;
+            color: #adb5bd;
+
+        }
+        h1 {
+            margin: 0;
+        }
+
+       .container {
+             max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color:#c8e8e9 ;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .room {
+            background-color: #3361FF ;
+            padding: 20px;
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .room img {
+            width: 100px;
+            height: 100px;
+            border-radius: 5px;
+            margin-right: 20px;
+        }
+
+        .room-details {
+            flex-grow: 1;
+        }
+
+        .room-number {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .availability {
+            font-size: 18px;
+            margin-top: 5px;
+        }
+
+        .details-button, .reserve-button {
+            background-color: #4c9dff;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+
+        .details-button {
+            margin-right: 10px;
+        }
+
+       img.rounded {
+    width: 300px;
+    height: 300px;
+        border-radius: 30px;
+}
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Hospital Room Availability</h1>
+    </header>
+    <div class="container">
+         <div class="room">
+             {% for room in room %}
+
+         <a href="{% url 'core:room_details' room.id %}">
+            <img class="rounded" src= "{{  room.image.url }}" alt="roompic">
+            <div class="room-details">
+                <div class="room-number">{{ room.description}}</div>
+
+               <button class="btn btn1">Details</button>
+
+            </div>
+            </a>
+
+                 {% endfor %}
+
+         </div>
+
+        <!-- Add more room divs as needed -->
+    </div>
+
+    <script>
+        function toggleAvailability(roomId) {
+            const roomElement = document.getElementById(roomId);
+
+            if (roomElement.textContent === 'Available') {
+                roomElement.textContent = 'Unavailable';
+            } else {
+                roomElement.textContent = 'Available';
+            }
+        }
+    </script>
+</body>
+</html>
+{% include 'core/footer.html' %}
+{% endblock %}

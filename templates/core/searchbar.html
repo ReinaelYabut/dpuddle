@@ -1,0 +1,21 @@
+ {% extends 'core/navbar.html' %}
+
+ {% block content %}
+ {% load static %}
+
+       <h2 class="text center"> Results </h2>
+    <div class="container">
+             <img src="{{ doctor.image.url }}" alt="doctor" class="image" style="border-radius: 30px; width: 400px; height: 400px;">
+                    <div class="middle">
+                    <div class="text">{{ doctor.name }}</div>
+                    </div>
+                  </div>
+                  <div class="text-container">
+                <h4>{{ doctor.name }}</h4>
+                <p>{{ doctor.specialty }}</p>
+                <p>{{ doctor.email}}</p>
+                <p>{{ doctor.phone }}</p>
+                <p>{{ doctor.address }}</p>
+    </div>
+
+ {% endblock %}
