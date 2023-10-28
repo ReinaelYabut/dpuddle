@@ -82,7 +82,7 @@
             width: 100px;
             height: 100px;
             border-radius: 5px;
-            margin-right: 20px;
+            margin-left: 100px;
         }
 
 </style>
@@ -90,7 +90,7 @@
 <h1>Room Details</h1>
 </header>
 <div class="room-details">
-    <img src="{{ room.image.url }}" alt="roompic">
+    <img src="{{ room.image.url }}" alt="roompic" class="room img">
     <div class="room-info">
         <div class="room-number">Room Number: {{ room.room_number }}</div>
         <div class="room-capacity">Max Capacity: {{ room.capacity }}</div>
