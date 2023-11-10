@@ -125,7 +125,7 @@
              {% for room in room %}
 
          <a href="{% url 'core:room_details' room.id %}">
-            <img class="rounded" src= "{{  room.image.url }}" alt="roompic">
+{       <img class="rounded" src= "{{  room.image.url }}" alt="roompic">#}
             <div class="room-details">
                 <div class="room-number">{{ room.description}}</div>
 

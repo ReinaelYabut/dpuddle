@@ -74,12 +74,14 @@
           class="formbold-form-input"
         />
       </div>
+
         <select name="doctor">
             {% for obj in query %}
                 <option value="{{ obj }}">{{ obj }}</option>
             {% endfor %}
         </select>
         </div>
+
         </div>
             <select name="room">
               {% for obj in Query %}

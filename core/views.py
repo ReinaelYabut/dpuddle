@@ -172,8 +172,11 @@ def appointments(request):
     print(Queryset)
     if request.method=="POST":
         print(request.POST)
-
+        print(request.POST['room'])
         post=appointmentsform()
+        room_obj = Room.objects.get(room_number=request.POST['room'])
+        print(room_obj.availability)
+
         post.user = request.user
         post.name = request.POST['name']
         post.phone = request.POST['phone']
@@ -182,6 +185,9 @@ def appointments(request):
         post.time = request.POST['time']
         post.doctor = request.POST['doctor']
         post.room = request.POST['room']
+        if room_obj.availability is True:
+            room_obj.availability = False
+            room_obj.save()
         post.save()
         return render(request, 'core/appointments.html')
     else:
