@@ -1,6 +1,5 @@
 {% block navbar %}
 {% load static %}
-<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -11,39 +10,162 @@
     <script src="https://cdn.tailwindcss.com"></script>
 
     <style>
+
+                 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+          .nav-container{
+              position: relative;
+              border-radius: 30px;
+              padding: 10px 60px 10px 60px;
+              box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+              background-color: #fff;
+          }
+
+          .font{
+            font-family: 'poppins', sans-serif;
+          }
+
+           .title {
+          font-family: 'poppins', sans-serif;
+          padding: 10px 20px;
+          color: #7f00ff;
+          text-align: center;
+          cursor: pointer;
+          position: relative;
+          font-weight: bolder;
+          transition: background-color 0.5s;
+        }
+
+           .title a{
+          font-family: 'poppins', sans-serif;
+          color: #7f00ff;
+          text-align: center;
+          font-weight: bolder;
+          cursor: pointer;
+          position: relative;
+          transition: background-color 0.5s;
+        }
+
+         .title:hover {
+          color: orangered;
+        }
+
+         .nav-item {
+          font-family: 'poppins', sans-serif;
+          padding: 10px 20px;
+          color: black;
+          text-align: center;
+          cursor: pointer;
+          position: relative;
+          transition: background-color 0.5s;
+        }
+
+           .nav-item a{
+          font-family: 'poppins', sans-serif;
+          color: black;
+          text-align: center;
+          cursor: pointer;
+          position: relative;
+          transition: background-color 0.5s;
+        }
+
+         .nav-item:hover a {
+          color: #7f00ff;
+        }
+
+        .nav-item:hover::before {
+          content: '';
+          position: absolute;
+          width: 100%;
+          height: 3px;
+          border-radius: 5px;
+          bottom: 0;
+          left: 0;
+          background-color: #7f00ff;
+          animation: slide-in 0.5s forwards;
+        }
+
+        @keyframes slide-in {
+            0% {
+                width: 0;
+                left: 50%;
+            }
+            100% {
+                width: 100%;
+                left: 0;
+            }
+        }
+
+        .nav-item:hover a, .nav-item.active a {
+            color: #7f00ff;
+        }
+
+        .nav-item:hover::before, .nav-item.active::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 3px;
+            border-radius: 5px;
+            bottom: 0;
+            left: 0;
+            background-color: #7f00ff;
+        }
+
         .hello-msg {
-            font-size: 20px;
+            font-size: 18px;
             font-weight: bold;
             color: #000;
             margin-left: 20px;
+            margin-top: 10px;
+            position: relative;
+
+
         }
     </style>
 
 </head>
 
-<body>
-    {% block content %}
+
+
     <script src="{% static 'js/bootstrap.js' %}"></script>
     <nav class="py-6 px-6 flex justify-content-sm-center border-b border-blue-300">
-        <a href="/" class="text-2xl  font-bold">eVisit</a>
-        <ul class="flex items-center">
-            <li class="ml-6"><a href="/doctor" class="text-lg hover:text-blue-300">Doctor</a></li>
-            <li class="ml-6"><a href="/admin" class="text-lg hover:text-blue-300">Admin</a></li>
-            <li class="ml-6"><a href="/patient" class="text-lg hover:text-blue-300">Patient</a></li>
-            <li class="ml-6"><a href="/room" class="text-lg hover:text-blue-300">Rooms</a></li>
-            <li class="ml-6"><a href="/appointment" class="text-lg hover:text-blue-300">Appointments</a></li>
-            <li class="ml-6"><a href="/medicine" class="text-lg hover:text-blue-300">Medicines</a></li>
+                <div class="nav-container">
+
+        <ul class="flex items-center" >
+                <a href="/" class="title text-lg" style="font-size: 20px;">eVisit</a>
+        <li class="nav-item{% if request.path == '/doctor/' %} active{% endif %}">
+            <a href="/doctor" class="text-lg">Doctor</a>
+        </li>
+        <li class="nav-item{% if request.path == '/admin/' %} active{% endif %}">
+            <a href="/admin" class="text-lg">Admin</a>
+        </li>
+        <li class="nav-item{% if request.path == '/patient/' %} active{% endif %}">
+            <a href="/patient" class="text-lg">Patients</a>
+        </li>
+        <li class="nav-item{% if request.path == '/room/' %} active{% endif %}">
+            <a href="/room" class="text-lg">Rooms</a>
+        </li>
+        <li class="nav-item{% if request.path == '/appointment/' %} active{% endif %}">
+            <a href="/appointment" class="text-lg">Appointments</a>
+        </li>
+        <li class="nav-item{% if request.path == '/medicine/' %} active{% endif %}">
+            <a href="/medicine" class="text-lg">Medicines</a>
+        </li>
+
+
             {% if not request.user.is_authenticated %}
-                <li class="ml-6"><a href="/login" class="px-6 py-3 text-lg bg-teal-500 text-white rounded-xl hover:bg-teal-700">Login</a></li>
-                <li class="ml-6"><a href="/register" class="px-6 py-3 text-lg bg-teal-500 text-white rounded-xl hover:bg-teal-700">Register</a></li>
+                <li class="font"><a href="/login" class="px-6 py-3 text-lg bg-teal-500 text-white rounded-xl hover:bg-teal-700">Login</a></li>
+                <li class="font"><a href="/register" class="px-6 py-3 text-lg bg-teal-500 text-white rounded-xl hover:bg-teal-700">Register</a></li>
             {% else %}
-                <li class="ml-6"><a href="/logout" class="px-6 py-3 text-lg bg-red-500 text-white rounded-xl hover:bg-teal-700">Logout</a></li>
+                <li class="font"><a href="/logout" class="px-6 py-3 text-lg bg-red-500 text-white hover:bg-teal-700" style="border-radius: 20px; margin-left: 2px; padding: 15px 17px; height: 3px;">Logout</a></li>
             {% endif %}
+        <span class="font hello-msg font-bold" style="margin-bottom: 4px;">Hello, {{ request.user }}</span>
         </ul>
-        <span class="hello-msg">Hello, {{ request.user }}</span>
+    </div>
     </nav>
+
+
 {% endblock %}
 </body>
 
-</html>
-{% endblock %}
+    </html>
+
