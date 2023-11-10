@@ -120,6 +120,17 @@ class DoctorCreateView(CreateView):
 
 def medicines(request):
     medicine = medicinelib.objects.all()
+    
+    page = request.GET.get('page')
+    paginator = Paginator(medicine, 3)
+    try:
+        medicine = paginator.page(page)
+    except PageNotAnInteger:
+        medicine = paginator.page(1)
+    except EmptyPage:
+        medicine = paginator.page(paginator.num_pages)
+
+    
     return render(request, 'core/medicines.html', {'medicine': medicine})
 
 
