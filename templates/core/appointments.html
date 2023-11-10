@@ -79,8 +79,13 @@
                 <option value="{{ obj }}">{{ obj }}</option>
             {% endfor %}
         </select>
-  </div>
-</div>
+        </div>
+        </div>
+            <select name="room">
+              {% for obj in Query %}
+                 <option value="{{ obj }}">{{ obj }}</option>
+              {% endfor %}
+            </select>
      
         <button class="formbold-btn" onClick="popMessage()">Book Appointment</button>
 

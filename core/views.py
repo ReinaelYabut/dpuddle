@@ -168,6 +168,8 @@ def patients(request):
 def appointments(request):
     queryset = Doctor.objects.all()
     print(queryset)
+    Queryset = Room.objects.all()
+    print(Queryset)
     if request.method=="POST":
         print(request.POST)
 
@@ -179,11 +181,11 @@ def appointments(request):
         post.date = request.POST['date']
         post.time = request.POST['time']
         post.doctor = request.POST['doctor']
-
+        post.room = request.POST['room']
         post.save()
         return render(request, 'core/appointments.html')
     else:
-        return render(request, 'core/appointments.html', {'query': queryset})
+        return render(request, 'core/appointments.html', {'query': queryset, 'Query' : Queryset})
 # def doctor_list(request):
 #     search_query = request.GET.get('search')
 #     if search_query:
