@@ -11,6 +11,9 @@ from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from authuser.models import User
 
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+
+
 from django.contrib.auth.decorators import login_required
 from persons.decorators import unaunthenticated_user
 
