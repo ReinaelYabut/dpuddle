@@ -1,5 +1,5 @@
 {% include 'core/navbar.html' %}
-{#{% load static %}#}
+{% load static %}
     {% block content %}
 
 <!DOCTYPE html>
@@ -17,13 +17,9 @@
             box-sizing: border-box;
             font-family: 'poppins', sans-serif;
         }
-        body {
-            overflow: hidden;
-        }
+
         .container {
             width: 100%;
-            min-height: 100vh;
-            background-color: #f3f5f8;
         }
         .wrapper{
             display: flex;
@@ -78,7 +74,7 @@
         .btns{
             width: 100%;
             position: relative;
-            left: 45px;
+            left: 35px;
 
         }
         button{
@@ -94,7 +90,7 @@
             letter-spacing: 2px;
             text-transform: capitalize;
             box-shadow: 0 10px 15px rgba(0,0,0,2);
-            border-radius: 5px;
+            border-radius: 25px;
         }
         button:hover{
             background-color: #7f00ff;
@@ -110,11 +106,13 @@
 
         .imgbox img{
             position: relative;
-            height: 100%;
-            width: calc(130% - 80px);
-            top: -100px;
-            right: 50px;
+            margin-top: 100px;
+            margin-left: 60px;
+            height: 1000px;
             transform: rotateY(180deg);
+            width: calc(90 - 120px);
+            top: -75px;
+            right: 50px;
             animation: animateUser 4s linear infinite;
         }
 
@@ -157,7 +155,7 @@
  <div class="container">
         <div class="wrapper">
             <div class="cols cols0 fade-in">
-                <span class="topline">Welcome to</span>
+                <span class="topline" style="margin-top: 30px;">Welcome to</span>
                 <h1 class="fade-title">eVisit </h1>
                 <h1 class="fade-title"><span class="multiText">Healthcare</span></h1>
                 <p>Place to Schedule Your Hospital Procedures!</p>
@@ -168,9 +166,9 @@
 
             </div>
 
-                <div class="cols cols1">
+                <div class="cols cols1" style="margin-top: 500px;">
                     <div class="imgbox">
-                        <img src="doctorimg.jpg">
+                        <img src="https://www.gerso.org/wp-content/uploads/2020/08/doctor-pointing.png">
                     </div>
                 </div>
 

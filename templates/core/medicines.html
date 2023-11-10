@@ -39,6 +39,7 @@ h2{font-size: 48px;}
 h3{font-size: 36px;}
 h4{font-size: 24px;}
 h5{font-size: 18px;}
+h6{font-size: 15px;}
 h1, h2, h3, h4, h5, h6
 {
 	font-family: 'Oswald', sans-serif;
@@ -52,6 +53,7 @@ h3::selection,
 h4::selection,
 h5::selection,
 h6::selection,
+
 
 img.rounded {
     width: 400px;
@@ -167,6 +169,28 @@ body{
 
 }
 
+    .mybutton {
+        color: #fff;
+        font-size: 15px;
+        outline: none;
+        border: none;
+        padding: 4px 12px;
+        border-radius: 6px;
+        background: #3e2093;
+
+    }
+
+    .mybutton:hover {
+        background: #5029bc;
+    }
+
+    .center {
+        text-align: center;
+        margin-block: auto;
+    }
+
+
+
     }
 
 </style>
@@ -225,6 +249,24 @@ body{
     {% endif %}
 </div>
 
+<div>
+    {% if not medicine_contains_query %}
+    <h6 style="margin-bottom: 10px; text-align: center;">Page {{ medicine.number }} of {{ medicine.paginator.num_pages }}.</h6>
+{% endif %}
+
+    <div class="center">
+        {% if medicine.has_previous %}
+            <a href="?page=1" class="mybutton">&laquo; First Page</a>
+            <a href="?page={{ medicine.previous_page_number }}" class="mybutton">Previous</a>
+        {% endif %}
+
+        {% if medicine.has_next %}
+            <a href="?page={{ medicine.next_page_number }}" class="mybutton">Next Page</a>
+            <a href="?page={{ medicine.paginator.num_pages }}" class="mybutton">Last Page&raquo;</a>
+        {% endif %}
+      </div>
+</div>
+
 </div>
 
 
@@ -232,6 +274,5 @@ body{
 </body>
 </html>
 
-
-{% include 'core/footer.html' %}
 {% endblock %}
+{% include 'core/footer.html' %}

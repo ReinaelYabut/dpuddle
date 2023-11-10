@@ -179,29 +179,5 @@
 
 
 
-
-
-<div class="button" id="button">
-    <input type="button" onclick="topFunction()" value="Back to Top" title="Go to top" />
-</div>
-
-<script>
-    let thebutton = document.getElementById("button");
-
-    window.addEventListener("scroll", scrollFunction);
-
-    function scrollFunction() {
-        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-            thebutton.style.display = "block";
-        } else {
-            thebutton.style.display = "none";
-        }
-    }
-
-    function topFunction() {
-        document.body.scrollTop = 0; // For Safari
-        document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE, and Opera
-    }
-</script>
 {% include 'core/footer.html' %}
 {% endblock %}

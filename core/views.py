@@ -10,6 +10,8 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from authuser.models import User
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+
 
 from django.contrib.auth.decorators import login_required
 from persons.decorators import unaunthenticated_user
@@ -45,7 +47,7 @@ def doctor(request, doctors=None):
     doctors = Doctor.objects.all()
 
     return render(request, 'persons/doctors.html',
-                  {'doctors': doctors, 'patients': Patient, }
+                  {'doctors': doctors, 'patients': Patient}
                   )
 # added this new function for doctor detail
 @login_required(login_url='core:login')
@@ -120,6 +122,16 @@ class DoctorCreateView(CreateView):
 
 def medicines(request):
     medicine = medicinelib.objects.all()
+
+    page = request.GET.get('page')
+    paginator = Paginator(medicine, 3)
+    try:
+        medicine = paginator.page(page)
+    except PageNotAnInteger:
+        medicine = paginator.page(1)
+    except EmptyPage:
+        medicine = paginator.page(paginator.num_pages)
+
     return render(request, 'core/medicines.html', {'medicine': medicine})
 
 
