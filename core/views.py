@@ -1,4 +1,5 @@
 from django.db.models import Q
+from django.http import HttpResponseForbidden
 from django.shortcuts import render, redirect
 
 from persons.decorators import unaunthenticated_user
@@ -43,13 +44,17 @@ def contact(request):
         return render(request, 'core/contact.html')
 
 
+
 @login_required(login_url='core:login')
 def doctor(request, doctors=None):
+    # if not request.user.is_superuser:
+    #     # Handle the case where the user is not a superuser
+    #     return HttpResponseForbidden("You do not have permission to access this page.")
+
     doctors = Doctor.objects.all()
 
     return render(request, 'persons/doctors.html',
-                  {'doctors': doctors, 'patients': Patient, }
-                  )
+                  {'doctors': doctors, 'patients': Patient.objects.all()})
 # added this new function for doctor detail
 @login_required(login_url='core:login')
 def doctorDetails(request, pk):
@@ -116,11 +121,16 @@ def about(request):
 def privacypolicy(request):
     return render(request, 'core/privacypolicy.html')
 
+
 class DoctorCreateView(CreateView):
     form_class = DoctorForm
     template_name = 'core/doctors/create_view.html'
     success_url = reverse_lazy('core:doctor')
 
+    def dispatch(self, request, *args, **kwargs):
+        if not request.user.is_superuser:
+            return HttpResponseForbidden("You do not have permission to access this page.")
+        return super().dispatch(request, *args, **kwargs)
 def medicines(request):
     medicine = medicinelib.objects.all()
     
@@ -176,7 +186,11 @@ def room_details(request, room_id):
     print(room)
     return render(request, 'core/room_details.html', {'room': room})
 
+@login_required(login_url='core:login')
 def patients(request):
+    if not request.user.is_superuser:
+        return HttpResponseForbidden("You do not have permission to access this page.")
+
     return render(request, 'core/patients.html')
 
 def appointments(request):

@@ -59,6 +59,10 @@ class User(AbstractBaseUser, PermissionsMixin):
     class Meta:
         verbose_name = 'User'
         verbose_name_plural = 'Users'
+        permissions = [
+            ("view_all_sites", "Can view all sites"),
+            ("view_patient_sites", "Can view patient-specific sites"),
+        ]
 
     def get_full_name(self):
         return self.name
