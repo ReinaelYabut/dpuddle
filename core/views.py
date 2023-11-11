@@ -206,27 +206,17 @@ def appointments(request):
         return render(request, 'core/appointments.html')
     else:
         return render(request, 'core/appointments.html', {'query': queryset, 'Query' : Queryset})
-# def doctor_list(request):
-#     search_query = request.GET.get('search')
-#     if search_query:
-#         # Filter doctors by name or specialization
-#         doctors = Doctor.objects.filter(Q(name__icontains=search_query) | Q(specialization__icontains=search_query))
-#     else:
-#         # If no search query, show all doctors
-#         doctors = Doctor.objects.all()
-#
-#     return render(request, 'persons/doctors.html', {'doctors': doctors})
-#
-# def searchbar(request):
-#     if request.method == 'GET':
-#         query = request.GET['query']
-#         if query:
-#             doctors = Doctor.objects.filter(Q(name__icontains=query) | Q(specialization__icontains=query))
-#             return render(request, 'core/searchbar.html', {'doctors': doctors})
-#         else:
-#             print('No information to show')
-#             return render(request, 'core/searchbar.html', {})
-#
-# def doctor_list(request):
-#     doctors = Doctor.objects.all()  # Retrieve all Doctor objects from the database
-#     return render(request, 'persons/doctor_detail.html', {'doctors': doctors})
+def docfilterview(request):
+    doctor_contains_query = request.GET.get('doctor_contains')
+    print(doctor_contains_query)
+    if doctor_contains_query and doctor_contains_query.strip():
+        queryset = Doctor.objects.filter(name__icontains=doctor_contains_query)
+    else:
+        queryset = Doctor.objects.all()
+
+    context = {
+        'queryset': queryset,
+        'doctor_contains_query': doctor_contains_query,
+    }
+
+    return render(request, 'persons/doctors.html', context)

@@ -27,4 +27,6 @@ urlpatterns = [
 path('appointment/', views.appointments, name='appointments'),
     path('patient/', views.patients, name='patients'),
     # path('search/', views.searchbar, name='search'),
+    path('doctors/', views.docfilterview, name='docfilterview'),
+
 ]
