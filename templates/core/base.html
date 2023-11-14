@@ -1,5 +1,6 @@
 {% include 'core/navbar.html' %}
 {% load static %}
+
     {% block content %}
 
 <!DOCTYPE html>
@@ -12,14 +13,14 @@
 
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
         * {
-            margin: 0;
-            padding: 0;
+
             box-sizing: border-box;
             font-family: 'poppins', sans-serif;
         }
 
         .container {
             width: 100%;
+            background-color: #f3f5f8;
         }
         .wrapper{
             display: flex;
@@ -74,7 +75,7 @@
         .btns{
             width: 100%;
             position: relative;
-            left: 35px;
+            left: 45px;
 
         }
         button{
@@ -90,7 +91,9 @@
             letter-spacing: 2px;
             text-transform: capitalize;
             box-shadow: 0 10px 15px rgba(0,0,0,2);
+
             border-radius: 25px;
+
         }
         button:hover{
             background-color: #7f00ff;
@@ -106,13 +109,13 @@
 
         .imgbox img{
             position: relative;
-            margin-top: 100px;
+            margin-top: -300px;
             margin-left: 60px;
             height: 1000px;
             transform: rotateY(180deg);
-            width: calc(90 - 120px);
-            top: -75px;
             right: 50px;
+
+            top: -100px;
             animation: animateUser 4s linear infinite;
         }
 
@@ -169,6 +172,7 @@
                 <div class="cols cols1" style="margin-top: 500px;">
                     <div class="imgbox">
                         <img src="https://www.gerso.org/wp-content/uploads/2020/08/doctor-pointing.png">
+
                     </div>
                 </div>
 

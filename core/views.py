@@ -12,7 +12,6 @@ from django.contrib.auth import authenticate, login, logout
 from authuser.models import User
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
-
 from django.contrib.auth.decorators import login_required
 from persons.decorators import unaunthenticated_user
 
@@ -48,6 +47,7 @@ def doctor(request, doctors=None):
 
     return render(request, 'persons/doctors.html',
                   {'doctors': doctors, 'patients': Patient}
+
                   )
 # added this new function for doctor detail
 @login_required(login_url='core:login')
@@ -131,7 +131,6 @@ def medicines(request):
         medicine = paginator.page(1)
     except EmptyPage:
         medicine = paginator.page(paginator.num_pages)
-
     return render(request, 'core/medicines.html', {'medicine': medicine})
 
 
@@ -182,6 +181,18 @@ def appointments(request):
     print(doctors)
     if request.method=="POST":
         post=appointmentsform()
+    queryset = Doctor.objects.all()
+    print(queryset)
+    Queryset = Room.objects.all()
+    print(Queryset)
+    if request.method=="POST":
+        print(request.POST)
+        print(request.POST['room'])
+        post=appointmentsform()
+        room_obj = Room.objects.get(room_number=request.POST['room'])
+        print(room_obj.availability)
+
+        post.user = request.user
         post.name = request.POST['name']
         post.phone = request.POST['phone']
         post.email = request.POST['email']
@@ -197,7 +208,14 @@ def appointments(request):
             'doctors': doctors
         }
         return render(request, 'core/appointments.html', context)
-# def doctor_list(request):
+#         if room_obj.availability is True:
+#             room_obj.availability = False
+#             room_obj.save()
+#         post.save()
+#         return render(request, 'core/appointments.html')
+#     else:
+#         return render(request, 'core/appointments.html', {'query': queryset, 'Query' : Queryset})
+# # def doctor_list(request):
 #     search_query = request.GET.get('search')
 #     if search_query:
 #         # Filter doctors by name or specialization
@@ -220,4 +238,8 @@ def appointments(request):
 #
 # def doctor_list(request):
 #     doctors = Doctor.objects.all()  # Retrieve all Doctor objects from the database
+
 #     return render(request, 'persons/doctor_detail.html', {'doctors': doctors})
+
+#     return render(request, 'persons/doctor_detail.html', {'doctors': doctors})
+

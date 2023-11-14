@@ -1,6 +1,5 @@
 {% block navbar %}
 {% load static %}
-<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -11,6 +10,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
 
     <style>
+
                  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
           .nav-container{
               position: relative;
@@ -117,13 +117,15 @@
             margin-left: 20px;
             margin-top: 10px;
             position: relative;
+
+
         }
     </style>
 
 </head>
 
-<div>
-    {% block content %}
+
+
     <script src="{% static 'js/bootstrap.js' %}"></script>
     <nav class="py-6 px-6 flex justify-content-sm-center border-b border-blue-300">
                 <div class="nav-container">
@@ -149,11 +151,7 @@
             <a href="/medicine" class="text-lg">Medicines</a>
         </li>
 
-{#            <li class="nav-item "><a href="/admin" class="text-lg hover:text-blue-300">Admin</a></li>#}
-{#            <li class="nav-item "><a href="/patient" class="text-lg hover:text-blue-300">Patient</a></li>#}
-{#            <li class="nav-item "><a href="/room" class="text-lg hover:text-blue-300">Rooms</a></li>#}
-{#            <li class="nav-item "><a href="/appointment" class="text-lg hover:text-blue-300">Appointments</a></li>#}
-{#            <li class="nav-item "><a href="/medicine" class="text-lg hover:text-blue-300">Medicines</a></li>#}
+
             {% if not request.user.is_authenticated %}
                 <li class="font"><a href="/login" class="px-6 py-3 text-lg bg-teal-500 text-white rounded-xl hover:bg-teal-700">Login</a></li>
                 <li class="font"><a href="/register" class="px-6 py-3 text-lg bg-teal-500 text-white rounded-xl hover:bg-teal-700">Register</a></li>
@@ -171,4 +169,3 @@
 
     </html>
 
-{% endblock %}

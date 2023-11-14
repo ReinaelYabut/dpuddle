@@ -22,6 +22,7 @@
 
         {% csrf_token %}
 
+
       <div class="formbold-mb-5">
         <label for="name" class="formbold-form-label"> Full Name </label>
         <input
@@ -72,6 +73,7 @@
           class="formbold-form-input"
         />
       </div>
+
   </div>
 </div>
       <div class="formbold-mb-5 formbold-pt-3">
@@ -100,6 +102,22 @@
 
           </select>
       <div>
+
+
+        <select name="doctor">
+            {% for obj in query %}
+                <option value="{{ obj }}">{{ obj }}</option>
+            {% endfor %}
+        </select>
+        </div>
+
+        </div>
+            <select name="room">
+              {% for obj in Query %}
+                 <option value="{{ obj }}">{{ obj }}</option>
+              {% endfor %}
+            </select>
+     
         <button class="formbold-btn" onClick="popMessage()">Book Appointment</button>
 
       </div>
@@ -249,3 +267,4 @@
 
 {% include 'core/footer.html' %}
 {% endblock %}
+
