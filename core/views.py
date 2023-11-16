@@ -217,7 +217,7 @@ def appointments(request):
             room_obj.availability = False
             room_obj.save()
         post.save()
-        return render(request, 'core/appointments.html')
+        return render(request, 'core/appointments.html', {'query': queryset, 'Query' : Queryset})
     else:
         return render(request, 'core/appointments.html', {'query': queryset, 'Query' : Queryset})
 def docfilterview(request):
