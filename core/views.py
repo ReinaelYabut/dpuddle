@@ -188,6 +188,10 @@ def room_details(request, room_id):
 
 @login_required(login_url='core:login')
 def patients(request):
+    patients_data = Patient.objects.all()
+    appointments_data = appointmentsform.objects.all()
+    return render(request, 'core/patients.html',
+                  {'patients_data': patients_data, 'appointments_data': appointments_data})
     if not request.user.is_superuser:
         return HttpResponseForbidden("You do not have permission to access this page.")
 

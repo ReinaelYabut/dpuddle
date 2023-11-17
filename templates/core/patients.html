@@ -1,12 +1,13 @@
 {% include 'core/navbar.html' %}
-
 {% block content %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Patients</title>
     <link rel="stylesheet" type="text/css" href="styles.css">
+     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <style>
         h1 {
             background-color: #007bff;
@@ -23,11 +24,9 @@
             width: 100%;
             background: #c8e8e9;
         }
-
         .text-container {
             max-width: 400px;
         }
-
         h2 {
             background-color: #c8e8e9;
             color: #000000;
@@ -37,146 +36,114 @@
             font-size: 22px;
             font-family: "Arial Rounded MT Bold", Times, serif;
         }
-
         table {
             border-collapse: collapse;
             width: 100%;
         }
-
         .table th, .table td {
             border: 1px solid #000000;
             padding: 10px;
             text-align: center;
         }
-
         .table th {
             background-color: #c8e8e9;
         }
-
-        tr:nth-child(even) {
-            background-color: #f2f2f2;
-        }
-
-        /* Style for "completed" status */
-        .completed {
-            background-color: #5cb85c;
+          .button {
+            background-color: #007bff; /* Green */
+            border: none;
             color: white;
+            padding: 2px 19px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            transition: background-color 0.3s;
         }
 
-        /* Style for "ongoing" status */
-        .ongoing {
-            background-color: #f0ad4e;
-            color: white;
-        }
-
-        .button {
-  background-color: #007bff; /* Green */
-  border: none;
-  color: white;
-  padding: 8px 16px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 12px;
-  margin: 4px 6px;
-  cursor: pointer;
-  -webkit-transition-duration: 0.4s; /* Safari */
-  transition-duration: 0.4s;
-}
         .button:hover {
-  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
-}
+            background-color: #2362a8; /* Darker Green on hover */
+        }
+
+        .button-container {
+            text-align: -moz-right;
+            margin-bottom: 2px;
+        }
+
+        #patientTableBody {
+            display: none; /* Hide the patient table initially */
+        }
     </style>
+    <script>
+        $(document).ready(function () {
+            // Show/hide patient table when button is clicked
+            $("#showPatientsBtn").click(function () {
+                $("#patientTableBody").toggle();
+            });
+
+            // Search functionality
+            $("#searchBtn").click(function () {
+                var searchTerm = $("#searchInput").val().toLowerCase();
+                $(".table tbody tr").each(function () {
+                    var rowText = $(this).text().toLowerCase();
+                    if (rowText.includes(searchTerm)) {
+                        $(this).show();
+                    } else {
+                        $(this).hide();
+                    }
+                });
+            });
+        });
+    </script>
 </head>
 <body>
 
-    <h1>Patients</h1>
-    <form class="search-form">
-        <input type="text" class="search-input" placeholder="Patient Id">
-        <button type="submit" class="button">Search</button>
 
-    </form>
+    <h1>Patients</h1>
+    <div class="button-container">
+        <input type="text" id="searchInput" placeholder="Search">
+        <button1 id="searchBtn" class="button">Search</button1>
+
+    </div>
 
     <h2>List of Recent Patients</h2>
     <table class="table">
-        <tr>
-            <th>Patient ID</th>
-            <th>Date of Visitation</th>
-            <th>Status</th>
-            <th>Doctor of Patient</th>
-            <th>Records of Patient</th>
-        </tr>
-        <tr>
-            <td>1010</td>
-            <td>October 15, 2023</td>
-            <td>Ongoing</td>
-            <td>N/A</td>
-            <td>N/A</td>
-        </tr>
-         <tr>
-            <td>1009</td>
-            <td>October 15, 2023</td>
-            <td>Ongoing</td>
-            <td>N/A</td>
-            <td>N/A</td>
-        </tr>
-         <tr>
-            <td>1008</td>
-            <td>October 15, 2023</td>
-            <td>Ongoing</td>
-            <td>N/A</td>
-            <td>N/A</td>
-        </tr>
-         <tr>
-            <td>1007</td>
-            <td>October 15, 2023</td>
-            <td>Ongoing</td>
-            <td>N/A</td>
-            <td>N/A</td>
-        </tr>
-         <tr>
-            <td>1006</td>
-            <td>October 15, 2023</td>
-            <td>Ongoing</td>
-            <td>N/A</td>
-            <td>N/A</td>
-        </tr>
-         <tr>
-            <td>1005</td>
-            <td>October 15, 2023</td>
-            <td>Ongoing</td>
-            <td>N/A</td>
-            <td>N/A</td>
-        </tr>
-         <tr>
-            <td>1004</td>
-            <td>October 15, 2023</td>
-            <td>Ongoing</td>
-            <td>N/A</td>
-            <td>N/A</td>
-        </tr>
-         <tr>
-            <td>1003</td>
-            <td>October 15, 2023</td>
-            <td>Ongoing</td>
-            <td>N/A</td>
-            <td>N/A</td>
-        </tr>
-         <tr>
-            <td>1002</td>
-            <td>October 15, 2023</td>
-            <td>Ongoing</td>
-            <td>N/A</td>
-            <td>N/A</td>
-        </tr>
-         <tr>
-            <td>1001</td>
-            <td>October 15, 2023</td>
-            <td>Ongoing</td>
-            <td>N/A</td>
-            <td>N/A</td>
-        </tr>
-        <!-- Add more patient rows here -->
+        <thead>
+            <tr>
+                <th>NAME</th>
+                <th>PHONE</th>
+                <th>EMAIL</th>
+                <th>DATE</th>
+                <th>TIME</th>
+                <th>DOCTOR</th>
+            </tr>
+        </thead>
+        <tbody id="patientTableBody">
+            {% for patient in patients_data %}
+                <tr>
+                    <td>{{ patient.name }}</td>
+                    <td>{{ patient.phone }}</td>
+                    <td>{{ patient.email }}</td>
+                    <td>{{ patient.date }}</td>
+                    <td>{{ patient.time }}</td>
+                    <td>{{ patient.doctor }}</td>
+                    <!-- Add more columns if needed -->
+                </tr>
+            {% endfor %}
+        </tbody>
+         <tbody>
+            {% for appointment in appointments_data %}
+                <tr>
+                    <td>{{ appointment.name }}</td>
+                    <td>{{ appointment.phone }}</td>
+                    <td>{{ appointment.email }}</td>
+                    <td>{{ appointment.date }}</td>
+                    <td>{{ appointment.time }}</td>
+                    <td>{{ appointment.doctor }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
     </table>
 </body>
 </html>

@@ -18,10 +18,12 @@ class Doctor(models.Model):
         return self.name
 
 class Patient(models.Model):
-    name = models.CharField(max_length=50)
-    address = models.CharField(max_length=50)
-    phone = models.CharField(max_length=50)
-    email = models.CharField(max_length=50)
+    name = models.CharField(max_length=100)
+    phone = models.CharField(max_length=100)
+    email = models.EmailField(max_length=100)
+    date = models.TextField(default='')
+    time = models.TextField(default='')
+    doctor = models.CharField(max_length=100)
 
     class Meta:
         ordering = ['name']
